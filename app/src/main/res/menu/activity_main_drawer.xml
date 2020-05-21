@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_drug"
+            android:icon="@drawable/ic_bubble_chart_black_24dp"
+            android:title="@string/menu_narkotika" />
+        <item
+            android:id="@+id/nav_side_effect"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_dampak" />
+        <item
+            android:id="@+id/nav_rule"
+            android:icon="@drawable/ic_description_black_24dp"
+            android:title="@string/menu_undang" />
+        <item
+            android:id="@+id/nav_rehabilitation"
+            android:icon="@drawable/ic_description_black_24dp"
+            android:title="@string/menu_rehab" />
+        <item
+            android:id="@+id/nav_stat"
+            android:icon="@drawable/ic_description_black_24dp"
+            android:title="@string/menu_statistik" />
+
+
+    </group>
+</menu>

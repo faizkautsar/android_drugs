@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_drug">
+
+    <fragment
+        android:id="@+id/nav_drug"
+        android:name="com.example.drugs.fragments.DrugFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_drug">
+        <action
+            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+            app:destination="@id/nav_home_second" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home_second"
+        android:name="com.example.drugs.fragments.DrugFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_drug">
+        <action
+            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            app:destination="@id/nav_drug" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_side_effect"
+        android:name="com.example.drugs.fragments.DampakFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_dampak" />
+
+    <fragment
+        android:id="@+id/nav_rule"
+        android:name="com.example.drugs.fragments.PeraturanFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_peraturan" />
+
+    <fragment
+        android:id="@+id/nav_rehabilitation"
+        android:name="com.example.drugs.fragments.RehabilitationFragment"
+        android:label="@string/menu_rehab"
+        tools:layout="@layout/fragment_rehabilitation" />
+
+    <fragment
+        android:id="@+id/nav_stat"
+        android:name="com.example.drugs.fragments.StatisticFragment"
+        android:label="@string/menu_statistik"
+        tools:layout="@layout/fragment_statistik" />
+</navigation>

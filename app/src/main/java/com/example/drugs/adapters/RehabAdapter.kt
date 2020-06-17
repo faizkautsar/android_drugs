@@ -15,6 +15,7 @@ class RehabAdapter (private var rehabs : MutableList<Rehab>, private val context
             with(itemView){
                 pasien_umur.text = r.umur.toString() + " tahun"
                 pasien_rujukan.text = r.rujukan
+                pasien_ket.text = r.keterangan
                 setOnClickListener {
                     println()
                 }

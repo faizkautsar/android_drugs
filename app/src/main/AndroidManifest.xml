@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.drugs">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,8 +10,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".DetailNarcoticaActivity"
+            android:label="@string/title_activity_detail_narcotica"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".AdiktifActivity" />
+        <activity android:name=".PsicotropicaActivity" />
+        <activity android:name=".NarcoticaActivity" />
+        <activity
+            android:name=".DetailAdiktifActivity"
+            android:label="@string/title_activity_detail_adiktif"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailPsicotropicaActivity"
+            android:label="@string/title_activity_detail_psicotropica"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

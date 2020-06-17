@@ -9,24 +9,12 @@
         android:id="@+id/nav_drug"
         android:name="com.example.drugs.fragments.DrugFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_drug">
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
+        tools:layout="@layout/fragment_drug"/>
     <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.example.drugs.fragments.DrugFragment"
+        android:id="@+id/nav_psiko"
+        android:name="com.example.drugs.fragments.PsicotropicaFragment"
         android:label="@string/home_second"
-        tools:layout="@layout/fragment_drug">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_drug" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
-    </fragment>
+        tools:layout="@layout/fragment_psikotropika"/>
 
     <fragment
         android:id="@+id/nav_side_effect"
@@ -48,7 +36,7 @@
 
     <fragment
         android:id="@+id/nav_stat"
-        android:name="com.example.drugs.fragments.StatisticFragment"
+        android:name="com.example.drugs.fragments.UpayaFragment"
         android:label="@string/menu_statistik"
-        tools:layout="@layout/fragment_statistik" />
+        tools:layout="@layout/fragment_upaya" />
 </navigation>

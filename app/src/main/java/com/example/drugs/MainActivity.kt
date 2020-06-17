@@ -2,6 +2,7 @@ package com.example.drugs
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -31,7 +32,14 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
         appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_drug, R.id.nav_side_effect, R.id.nav_rule, R.id.nav_rehabilitation, R.id.nav_stat), drawer_layout)
+            R.id.nav_drug,
+            R.id.nav_side_effect,
+            R.id.nav_rule,
+            R.id.nav_rehabilitation,
+            R.id.nav_upaya
+        ), drawer_layout)
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         nav_view.setupWithNavController(navController)
     }
@@ -44,4 +52,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    private fun toast(message : String) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }

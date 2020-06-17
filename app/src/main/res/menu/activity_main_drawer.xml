@@ -7,7 +7,9 @@
         <item
             android:id="@+id/nav_drug"
             android:icon="@drawable/ic_bubble_chart_black_24dp"
-            android:title="@string/menu_narkotika" />
+            android:title="Narkoba" />
+
+
         <item
             android:id="@+id/nav_side_effect"
             android:icon="@drawable/ic_menu_gallery"
@@ -20,11 +22,10 @@
             android:id="@+id/nav_rehabilitation"
             android:icon="@drawable/ic_description_black_24dp"
             android:title="@string/menu_rehab" />
+
         <item
-            android:id="@+id/nav_stat"
+            android:id="@+id/nav_upaya"
             android:icon="@drawable/ic_description_black_24dp"
-            android:title="@string/menu_statistik" />
-
-
+            android:title="Upaya Pencegahan" />
     </group>
 </menu>

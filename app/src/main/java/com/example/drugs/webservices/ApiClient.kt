@@ -1,6 +1,6 @@
 package com.example.drugs.webservices
 
-import com.example.drugs.models.Rehab
+import com.example.drugs.models.*
 import com.google.gson.annotations.SerializedName
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -38,6 +38,16 @@ class ApiClient {
 interface ApiService {
     @GET("api/rehabilitasi")
     fun getRehab() : Call<WrappedListResponse<Rehab>>
+    @GET("api/narkotika")
+    fun getNarcotic() : Call<WrappedListResponse<Narcotic>>
+    @GET("api/psikotropika")
+    fun getPsicotropica() : Call<WrappedListResponse<Psicotropica>>
+    @GET("api/bhn_adiktif")
+    fun getAdiktif() : Call<WrappedListResponse<Adiktif>>
+    @GET("api/hukum")
+    fun getHukum() : Call<WrappedListResponse<Hukum>>
+    @GET("api/pencegahan")
+    fun getUpaya() : Call<WrappedListResponse<Upaya>>
 }
 
 data class WrappedResponse<T>(

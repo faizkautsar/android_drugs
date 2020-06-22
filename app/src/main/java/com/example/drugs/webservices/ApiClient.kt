@@ -6,7 +6,10 @@ import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
 class ApiClient {
@@ -48,6 +51,26 @@ interface ApiService {
     fun getHukum() : Call<WrappedListResponse<Hukum>>
     @GET("api/pencegahan")
     fun getUpaya() : Call<WrappedListResponse<Upaya>>
+
+    @FormUrlEncoded
+    @POST("api/register")
+    fun registrasi(
+        @Field("nama") nama : String,
+        @Field("email") email : String,
+        @Field("password") password : String,
+        @Field("no_telp") no_telp : String,
+        @Field("alamat") alamat : String,
+        @Field("desa") desa : String,
+        @Field("kecamatan")  kecamatan : String,
+        @Field("kode_pos")  kode_pos : String
+    ) : Call<WrappedResponse<User>>
+
+    @FormUrlEncoded
+    @POST("api/login")
+    fun login(
+        @Field("email") email : String,
+        @Field("password") password : String
+    ) : Call<WrappedResponse<User>>
 }
 
 data class WrappedResponse<T>(

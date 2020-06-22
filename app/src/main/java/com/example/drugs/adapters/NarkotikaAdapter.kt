@@ -20,8 +20,8 @@ class NarkotikaAdapter (private var narcotics : MutableList<Narcotic>, private v
                 narkotik_nama.text = n.nama
                 narkotik_jenis.text = n.jenis
                 narkotik_gol.text = n.golongan
-                narkotik_dampak.text = n.dampak
-                narkotik_ket.text = n.keterangan
+                narkotik_ket.setHtml(n.keterangan!!)
+                narkotik_dampak.setHtml(n.dampak!!)
                 narkotik_gambar.load("https://no-drugs.herokuapp.com/uploads/narkoba/narkotika/"+n.gambar)
                 setOnClickListener {
                     context.startActivity(Intent(context, DetailNarcoticaActivity::class.java).apply {

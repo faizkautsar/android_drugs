@@ -8,16 +8,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.drugs.R
-import com.example.drugs.adapters.PeraturanAdapter
 import com.example.drugs.adapters.UpayaAdapter
-import com.example.drugs.models.Hukum
 import com.example.drugs.models.Upaya
-import com.example.drugs.viewmodels.HukumState
-import com.example.drugs.viewmodels.HukumViewModel
 import com.example.drugs.viewmodels.UpayaState
 import com.example.drugs.viewmodels.UpayaViewModel
-import kotlinx.android.synthetic.main.fragment_peraturan.view.*
-import kotlinx.android.synthetic.main.fragment_peraturan.view.loading
 import kotlinx.android.synthetic.main.fragment_upaya.view.*
 
 class UpayaFragment : Fragment(R.layout.fragment_upaya){

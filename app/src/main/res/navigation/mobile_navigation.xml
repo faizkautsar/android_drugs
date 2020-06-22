@@ -10,11 +10,6 @@
         android:name="com.example.drugs.fragments.DrugFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_drug"/>
-    <fragment
-        android:id="@+id/nav_psiko"
-        android:name="com.example.drugs.fragments.PsicotropicaFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_psikotropika"/>
 
     <fragment
         android:id="@+id/nav_side_effect"
@@ -23,9 +18,9 @@
         tools:layout="@layout/fragment_dampak" />
 
     <fragment
-        android:id="@+id/nav_rule"
+        android:id="@+id/nav_hukum"
         android:name="com.example.drugs.fragments.PeraturanFragment"
-        android:label="@string/menu_slideshow"
+        android:label="Dasar Hukum"
         tools:layout="@layout/fragment_peraturan" />
 
     <fragment
@@ -35,8 +30,8 @@
         tools:layout="@layout/fragment_rehabilitation" />
 
     <fragment
-        android:id="@+id/nav_stat"
+        android:id="@+id/nav_upaya"
         android:name="com.example.drugs.fragments.UpayaFragment"
-        android:label="@string/menu_statistik"
+        android:label="Upaya Pencegahan"
         tools:layout="@layout/fragment_upaya" />
 </navigation>

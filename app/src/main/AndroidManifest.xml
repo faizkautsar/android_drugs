@@ -13,9 +13,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".btnAktifity"
+            android:label="@string/title_activity_btn_aktifity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity
             android:name=".DetailNarcoticaActivity"
             android:label="@string/title_activity_detail_narcotica"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AdiktifActivity" />
         <activity android:name=".PsicotropicaActivity" />
         <activity android:name=".NarcoticaActivity" />

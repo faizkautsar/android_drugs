@@ -14,6 +14,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/adiktif_gambar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -23,23 +29,21 @@
                     android:id="@+id/adiktif_nama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-                <TextView
+
+                <org.sufficientlysecure.htmltextview.HtmlTextView
                     android:id="@+id/adiktif_ket"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.Small"/>
+
+                <org.sufficientlysecure.htmltextview.HtmlTextView
                     android:id="@+id/adiktif_dampak"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@android:style/TextAppearance.Small"/>
 
 
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/adiktif_gambar"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"/>
-
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

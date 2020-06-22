@@ -15,6 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.nav_drug,
             R.id.nav_side_effect,
-            R.id.nav_rule,
+            R.id.nav_hukum,
             R.id.nav_rehabilitation,
             R.id.nav_upaya
         ), drawer_layout)

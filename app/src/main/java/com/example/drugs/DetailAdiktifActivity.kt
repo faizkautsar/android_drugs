@@ -20,15 +20,13 @@ class DetailAdiktifActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-            getPassedAdiktif()?.let {a->
-                supportActionBar?.setTitle(a.nama)
-                adiktif_gambar.load("https://no-drugs.herokuapp.com/uploads/narkoba/bhn_adiktif/"+a.gambar)
-                adiktif_ket.text = a.keterangan
-                adiktif_dampak.text = a.dampak
+            getPassedAdiktif()?.let {
+                supportActionBar?.setTitle(it.nama)
+                adiktif_gambar.load("https://no-drugs.herokuapp.com/uploads/narkoba/bhn_adiktif/"+it.gambar)
+                adiktif_ket.setHtml(it.keterangan!!)
+                adiktif_dampak.setHtml( it.dampak!!)
             }
-
         }
-
 
         private fun getPassedAdiktif() : Adiktif? = intent.getParcelableExtra("ADIKTIF")
 

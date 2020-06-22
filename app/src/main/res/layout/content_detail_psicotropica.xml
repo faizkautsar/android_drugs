@@ -12,19 +12,50 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#424141"
+            android:text="Golongan : " />
         <TextView
             android:id="@+id/psiko_gol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+    </LinearLayout>
         <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#424141"
+            android:text="Keterangan"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <org.sufficientlysecure.htmltextview.HtmlTextView
             android:id="@+id/psiko_ket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Small"/>
         <TextView
-            android:id="@+id/psiko_dampak"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#FF0404"
+            android:text="Dampak"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <org.sufficientlysecure.htmltextview.HtmlTextView
+            android:id="@+id/psiko_dampak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Small"/>
 
     </LinearLayout>
 

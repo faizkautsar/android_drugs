@@ -18,8 +18,8 @@ class AdiktifAdapter (private var adiktifs : MutableList<Adiktif>,
         fun bind(a: Adiktif, context: Context){
             with(itemView){
                 adiktif_nama.text = a.nama
-                adiktif_ket.text = a.keterangan
-                adiktif_dampak.text = a.dampak
+                adiktif_ket.setHtml(a.keterangan!!)
+                adiktif_dampak.setHtml(a.dampak!!)
                 adiktif_gambar.load("https://no-drugs.herokuapp.com/uploads/narkoba/bhn_adiktif/"+a.gambar)
                 setOnClickListener {
                     context.startActivity(Intent(context, DetailAdiktifActivity::class.java).apply {

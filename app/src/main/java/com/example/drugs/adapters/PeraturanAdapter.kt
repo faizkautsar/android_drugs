@@ -16,7 +16,7 @@ class PeraturanAdapter(private var hukums: MutableList<Hukum>, private val conte
         fun bind(h: Hukum, context: Context) {
             with(itemView) {
                 hukum_ket.text = h.keterangan
-                hukum_isi.text = h.isi
+                hukum_isi.setHtml(h.isi!!)
             }
         }
     }

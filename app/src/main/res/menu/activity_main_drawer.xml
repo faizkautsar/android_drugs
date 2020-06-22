@@ -5,23 +5,24 @@
 
     <group android:checkableBehavior="single">
         <item
+
             android:id="@+id/nav_drug"
             android:icon="@drawable/ic_bubble_chart_black_24dp"
             android:title="Narkoba" />
 
 
         <item
-            android:id="@+id/nav_side_effect"
+            android:id="@+id/nav_dampak"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_dampak" />
         <item
-            android:id="@+id/nav_rule"
+            android:id="@+id/nav_hukum"
             android:icon="@drawable/ic_description_black_24dp"
             android:title="@string/menu_undang" />
         <item
             android:id="@+id/nav_rehabilitation"
             android:icon="@drawable/ic_description_black_24dp"
-            android:title="@string/menu_rehab" />
+            android:title="Statistik Rehab" />
 
         <item
             android:id="@+id/nav_upaya"

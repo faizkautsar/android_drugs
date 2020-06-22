@@ -19,8 +19,8 @@ class DetailPsicotropicaActivity : AppCompatActivity() {
             supportActionBar?.setTitle(it.nama)
             psiko_gambar.load("https://no-drugs.herokuapp.com/uploads/narkoba/psikotropika/"+it.gambar)
             psiko_gol.text = it.golongan
-            psiko_ket.text = it.keterangan
-            psiko_dampak.text = it.dampak
+            psiko_ket.setHtml( it.keterangan!!)
+            psiko_dampak.setHtml(it.dampak!!)
         }
 
     }

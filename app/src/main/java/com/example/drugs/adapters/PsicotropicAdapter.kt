@@ -15,16 +15,16 @@ import kotlinx.android.synthetic.main.list_item_psikotropika.view.*
 class PsicotropicAdapter(private var psicotropicas : MutableList<Psicotropica>,
                          private val context : Context) : RecyclerView.Adapter<PsicotropicAdapter.ViewHolder>(){
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bind(r: Psicotropica, context: Context){
+        fun bind(p: Psicotropica, context: Context){
             with(itemView){
-                psiko_nama.text = r.nama
-                psiko_gol.text = r.golongan
-                psiko_ket.text = r.keterangan
-                psiko_dampak.text = r.dampak
-                psiko_gambar.load("https://no-drugs.herokuapp.com/uploads/narkoba/psikotropika/"+r.gambar)
+                psiko_nama.text = p.nama
+                psiko_gol.text = p.golongan
+                psiko_ket.setHtml(p.keterangan!!)
+                psiko_dampak.setHtml(p.dampak!!)
+                psiko_gambar.load("https://no-drugs.herokuapp.com/uploads/narkoba/psikotropika/"+p.gambar)
                 setOnClickListener {
                     context.startActivity(Intent(context, DetailPsicotropicaActivity::class.java).apply {
-                        putExtra("PSICO", r)
+                        putExtra("PSICO", p)
                     })
                 }
             }

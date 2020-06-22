@@ -16,10 +16,12 @@
             android:id="@+id/upaya_aspek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <TextView
+
+        <org.sufficientlysecure.htmltextview.HtmlTextView
             android:id="@+id/upaya_ket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Small"/>
 
     </LinearLayout>
 

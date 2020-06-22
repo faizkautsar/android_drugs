@@ -16,8 +16,7 @@ class UpayaAdapter (private var upayas: MutableList<Upaya>, private val context:
         fun bind(u: Upaya, context: Context) {
             with(itemView) {
                 upaya_aspek.text = u.aspek
-                upaya_ket.text = u.keterangan
-
+                upaya_ket.setHtml(u.keterangan!!)
             }
         }
     }

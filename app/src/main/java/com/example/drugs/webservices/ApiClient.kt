@@ -41,6 +41,7 @@ class ApiClient {
 interface ApiService {
     @GET("api/rehabilitasi")
     fun getRehab() : Call<WrappedListResponse<Rehab>>
+
     @GET("api/narkotika")
     fun getNarcotic() : Call<WrappedListResponse<Narcotic>>
     @GET("api/psikotropika")

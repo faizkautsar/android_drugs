@@ -7,12 +7,24 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.anychart.APIlib
+import com.anychart.AnyChart
+import com.anychart.chart.common.dataentry.DataEntry
+import com.anychart.chart.common.dataentry.ValueDataEntry
+import com.anychart.enums.Align
+import com.anychart.enums.HoverMode
+import com.anychart.enums.LegendLayout
+import com.anychart.enums.TooltipPositionMode
 import com.example.drugs.R
 import com.example.drugs.adapters.RehabAdapter
 import com.example.drugs.models.Rehab
 import com.example.drugs.viewmodels.RehabState
+
 import com.example.drugs.viewmodels.RehabViewModel
 import kotlinx.android.synthetic.main.fragment_rehabilitation.view.*
+import kotlinx.android.synthetic.main.rehab_barchart.*
+import kotlinx.android.synthetic.main.rehab_piechart.*
+
 
 class RehabilitationFragment : Fragment(R.layout.fragment_rehabilitation){
     private lateinit var rehabViewModel: RehabViewModel
@@ -26,12 +38,13 @@ class RehabilitationFragment : Fragment(R.layout.fragment_rehabilitation){
         rehabViewModel.fetchRehab()
     }
 
+
     private fun handleRehab(x : List<Rehab>){
-        view!!.rv_rehab.adapter?.let { a ->
-            if(a is RehabAdapter){
-                a.updateList(x)
-            }
-        }
+        view!!.rv_rehab.adapter?.let { r ->
+            if(r is RehabAdapter){
+                r.updateList(x)
+     }
+       }
     }
 
     private fun setupUI(){
@@ -45,13 +58,12 @@ class RehabilitationFragment : Fragment(R.layout.fragment_rehabilitation){
         when(i){
             is RehabState.Loading -> {
                 if(i.state){
-                    view!!.loading.visibility = View.VISIBLE
-                }else{
-                    view!!.loading.visibility = View.GONE
-                }
+                view!!.loading.visibility = View.VISIBLE
+              }else{
+                   view!!.loading.visibility = View.GONE
+               }
             }
             is RehabState.ShowToast -> Toast.makeText(activity, i.message, Toast.LENGTH_LONG).show()
         }
     }
-
 }

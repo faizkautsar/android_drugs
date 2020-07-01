@@ -13,9 +13,8 @@ class RehabAdapter (private var rehabs : MutableList<Rehab>, private val context
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(r: Rehab, context: Context){
             with(itemView){
-                pasien_umur.text = r.umur.toString() + " tahun"
+                pasien_umur.text = r.umur
                 pasien_rujukan.text = r.rujukan
-                pasien_ket.text = r.keterangan
                 setOnClickListener {
                     println()
                 }

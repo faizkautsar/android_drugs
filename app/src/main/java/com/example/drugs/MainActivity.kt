@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.nav_drug,
+            R.id.nav_home,
             R.id.nav_side_effect,
             R.id.nav_hukum,
             R.id.nav_rehabilitation,

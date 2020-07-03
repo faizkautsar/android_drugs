@@ -3,13 +3,11 @@ package com.example.drugs.webservices
 import com.example.drugs.models.*
 import com.google.gson.annotations.SerializedName
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 class ApiClient {
@@ -40,13 +38,13 @@ class ApiClient {
 
 interface ApiService {
     @GET("api/rehabilitasi")
-    fun getRehab() : Call<WrappedListResponse<Rehab>>
+    fun getRehab() : Call<WrappedListResponse<Rehabilitation>>
 
     @GET("api/narkotika")
     fun getNarcotic() : Call<WrappedListResponse<Narcotic>>
     @GET("api/psikotropika")
     fun getPsicotropica() : Call<WrappedListResponse<Psicotropica>>
-    @GET("api/bhn_adiktif")
+    @GET("api/zat_adiktif")
     fun getAdiktif() : Call<WrappedListResponse<Adiktif>>
     @GET("api/hukum")
     fun getHukum() : Call<WrappedListResponse<Hukum>>
@@ -55,16 +53,16 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("api/register")
-    fun registrasi(
-        @Field("nama") nama : String,
-        @Field("email") email : String,
-        @Field("password") password : String,
-        @Field("no_telp") no_telp : String,
-        @Field("alamat") alamat : String,
-        @Field("desa") desa : String,
-        @Field("kecamatan")  kecamatan : String,
-        @Field("kode_pos")  kode_pos : String
-    ) : Call<WrappedResponse<User>>
+    fun registrasi(@Body body : RequestBody) : Call<WrappedResponse<User>>
+
+//    @Field("nama") nama : String,
+//    @Field("email") email : String,
+//    @Field("password") password : String,
+//    @Field("no_telp") no_telp : String,
+//    @Field("alamat") alamat : String,
+//    @Field("desa") desa : String,
+//    @Field("kecamatan")  kecamatan : String,
+//    @Field("kode_pos")  kode_pos : String
 
     @FormUrlEncoded
     @POST("api/login")

@@ -14,5 +14,6 @@ data class User(
     @SerializedName("desa")var desa : String? = null,
     @SerializedName("kecamatan") var kecamatan : String? = null,
     @SerializedName("kode_pos") var kode_pos : String? = null,
-    @SerializedName("api_token") var token : String? = null
+    @SerializedName("api_token") var token : String? = null,
+    @SerializedName("password") var password: String? = null
 ) : Parcelable

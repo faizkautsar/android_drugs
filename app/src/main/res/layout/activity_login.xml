@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".ui.login.LoginActivity">
 
     <LinearLayout
         android:layout_centerInParent="true"
@@ -24,6 +24,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_email"
+            app:boxBackgroundColor="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true">
@@ -38,6 +39,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_pass"
+            app:boxBackgroundColor="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true">

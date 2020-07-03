@@ -3,6 +3,7 @@ package com.example.drugs.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.drugs.models.Rehab
+import com.example.drugs.models.Rehabilitation
 import com.example.drugs.webservices.ApiClient
 import com.example.drugs.webservices.SingleLiveEvent
 import com.example.drugs.webservices.WrappedListResponse
@@ -30,23 +31,14 @@ class RehabViewModel : ViewModel(){
 
     fun fetchRehab() {
         setLoading()
-        api.getRehab().enqueue(object : Callback<WrappedListResponse<Rehab>> {
-            override fun onFailure(
-                call: Call<WrappedListResponse<Rehab>>, t: Throwable) {
-                println(t.message)
-                hideLoading()
-                toast(t.message.toString())
+        api.getRehab().enqueue(object : Callback<WrappedListResponse<Rehabilitation>> {
+
+
+            override fun onFailure(call: Call<WrappedListResponse<Rehabilitation>>, t: Throwable) {
             }
 
-            override fun onResponse(
-                call: Call<WrappedListResponse<Rehab>>,
-                response: Response<WrappedListResponse<Rehab>>
-            ) {
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    rehabs.postValue(body?.data)
-                }
-                hideLoading()
+            override fun onResponse(call: Call<WrappedListResponse<Rehabilitation>>, response: Response<WrappedListResponse<Rehabilitation>>) {
+
             }
 
         })

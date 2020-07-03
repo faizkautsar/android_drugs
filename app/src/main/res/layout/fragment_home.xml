@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_narkotika"
                     android:layout_weight="1"
                     app:cardUseCompatPadding="true"
@@ -30,6 +30,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:padding="@dimen/padding_size_8"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -40,6 +41,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:textAlignment="center"
                             android:gravity="center"
                             android:textStyle="bold"
                             android:text="Narkotika"
@@ -47,15 +49,16 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:textAlignment="center"
                             android:text="lorem ipsum dollor si amet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_psicotropica"
                     android:layout_weight="1"
                     app:cardUseCompatPadding="true"
@@ -66,6 +69,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:padding="@dimen/padding_size_8"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -76,6 +80,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:textAlignment="center"
                             android:gravity="center"
                             android:textStyle="bold"
                             android:text="Psicotropica"
@@ -83,15 +88,16 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:textAlignment="center"
                             android:text="lorem ipsum dollor si amet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_zat_adiktif"
                     android:layout_weight="1"
                     app:cardUseCompatPadding="true"
@@ -102,6 +108,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:padding="@dimen/padding_size_8"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -112,6 +119,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:textAlignment="center"
                             android:gravity="center"
                             android:textStyle="bold"
                             android:text="Zat Adiktif"
@@ -119,14 +127,36 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:textAlignment="center"
                             android:text="lorem ipsum dollor si amet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.anychart.AnyChartView
+                        android:id="@+id/referral_chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp" />
+                    <ProgressBar
+                        android:layout_centerInParent="true"
+                        android:id="@+id/referral_progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
 
 

@@ -56,33 +56,7 @@ class UserViewModel : ViewModel(){
         }
     }
     */
-    fun register(nama : String, email : String, pass : String, no_telp : String, alamat : String,
-    desa : String, kecamatan : String, kode_pos : String){
-        setLoading()
-        api.registrasi(nama, email, pass, no_telp, alamat, desa, kecamatan, kode_pos)
-            .enqueue(object : Callback<WrappedResponse<User>>{
-                override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
-                    println(t.message)
-                    hideLoading()
-                }
 
-                override fun onResponse(call: Call<WrappedResponse<User>>, response: Response<WrappedResponse<User>>) {
-                    if (response.isSuccessful){
-                        val body = response.body()
-                        if (body?.status!!){
-                            toast("berhasil")
-                            state.value = UserState.Success
-                        }else{
-                            println("b : ${body.message}")
-                        }
-                    }else{
-                        println("r : ${response.message()}")
-                    }
-                    hideLoading()
-                }
-
-            })
-    }
 
     fun login(email: String, pass: String){
         setLoading()

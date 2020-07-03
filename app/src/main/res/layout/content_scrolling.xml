@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_size_16"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.drug_detail.DrugDetailActivity"
+    tools:showIn="@layout/activity_drug_detail">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/detail_drug_name"
+            android:textSize="@dimen/text_size_18"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/detail_drug_type"
+            android:textSize="@dimen/text_size_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/detail_drug_class"
+            android:textSize="@dimen/text_size_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <org.sufficientlysecure.htmltextview.HtmlTextView
+            android:id="@+id/detail_drug_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <org.sufficientlysecure.htmltextview.HtmlTextView
+            android:id="@+id/detail_drug_effect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

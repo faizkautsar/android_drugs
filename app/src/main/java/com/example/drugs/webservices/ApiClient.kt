@@ -51,18 +51,9 @@ interface ApiService {
     @GET("api/pencegahan")
     fun getUpaya() : Call<WrappedListResponse<Upaya>>
 
-    @FormUrlEncoded
     @POST("api/register")
     fun registrasi(@Body body : RequestBody) : Call<WrappedResponse<User>>
 
-//    @Field("nama") nama : String,
-//    @Field("email") email : String,
-//    @Field("password") password : String,
-//    @Field("no_telp") no_telp : String,
-//    @Field("alamat") alamat : String,
-//    @Field("desa") desa : String,
-//    @Field("kecamatan")  kecamatan : String,
-//    @Field("kode_pos")  kode_pos : String
 
     @FormUrlEncoded
     @POST("api/login")

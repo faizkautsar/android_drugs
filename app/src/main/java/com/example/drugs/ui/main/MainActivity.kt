@@ -1,7 +1,9 @@
 package com.example.drugs.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import androidx.navigation.findNavController
@@ -13,6 +15,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import coil.api.load
 import com.example.drugs.R
+import com.example.drugs.extensions.gone
+import com.example.drugs.extensions.toast
+import com.example.drugs.extensions.visible
+import com.example.drugs.ui.login.LoginActivity
+import com.example.drugs.webservices.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -37,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_upaya
         ), drawer_layout)
 
-        setUserPhoto()
         setupActionBarWithNavController(navController, appBarConfiguration)
         nav_view.setupWithNavController(navController)
     }
@@ -51,9 +57,32 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_report -> {
+                if(Constants.getToken(this).equals("UNDEFINED")){
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                }else{
+                    toast("Lapor....")
+                }
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    private fun toast(message : String) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    override fun onResume() {
+        super.onResume()
+        if(Constants.getToken(this) != "UNDEFINED"){
+            user_photo.visible()
+            setUserPhoto()
+        }else{
+            user_photo.gone()
+        }
+    }
+
 }

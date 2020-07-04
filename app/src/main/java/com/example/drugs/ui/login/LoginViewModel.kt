@@ -14,7 +14,7 @@ class LoginViewModel(private val userRepo: UserRepository) : ViewModel(){
     private fun success(param: String){ state.value = LoginState.Success(param) }
     private fun alert(message: String){ state.value = LoginState.Alert(message) }
 
-    private fun login(email: String, password: String){
+    fun login(email: String, password: String){
         setLoading()
         userRepo.login(email, password, object: SingleResponse<User>{
             override fun onSuccess(data: User?) {

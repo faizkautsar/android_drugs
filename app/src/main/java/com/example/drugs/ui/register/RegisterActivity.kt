@@ -1,5 +1,6 @@
 package com.example.drugs.ui.register
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -47,7 +48,8 @@ class RegisterActivity : AppCompatActivity() {
 
             is RegisterState.Success-> {
                 Constants.setToken(this@RegisterActivity, "Bearer ${it.param}")
-                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                setResult(Activity.RESULT_OK)
+                finish()
             }
         }
     }
@@ -66,8 +68,6 @@ class RegisterActivity : AppCompatActivity() {
             val user = User(nama = nama,password = pass ,email = email, no_telp = no_telp, alamat = alamat, desa = desa, kecamatan = kecamatan, kode_pos = kode_pos)
             registerViewModel.register(user)
         }
-
     }
 
-    private fun toast(message : String) = Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_LONG).show()
 }

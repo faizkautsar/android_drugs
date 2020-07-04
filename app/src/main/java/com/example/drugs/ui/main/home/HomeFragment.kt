@@ -68,7 +68,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             APIlib.getInstance().setActiveAnyChartView(requireView().referral_chart)
             val cartesian: Cartesian = AnyChart.column()
             val data: MutableList<DataEntry> = ArrayList()
-            rehabs.forEach { (k, v) -> data.add(ValueDataEntry(k, v.count())) }
+            val temp = hashMapOf<String, Int>()
+            rehabs.forEach { (t, u) -> temp.put(t, u.count())  }
+
+            val temp2 = temp.toList().sortedByDescending { (_, value) -> value}.toMap()
+            temp2.forEach { (k, v) ->
+                data.add(ValueDataEntry(k, v))
+            }
             val column: Column = cartesian.column(data)
 
             column.tooltip().titleFormat("{%X}").position(Position.CENTER_BOTTOM).anchor(Anchor.CENTER_BOTTOM)

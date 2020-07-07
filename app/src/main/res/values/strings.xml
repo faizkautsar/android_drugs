@@ -10,7 +10,11 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-
+    <string-array name="tipe_peran">
+        <item>Bandar</item>
+        <item>Kurir</item>
+        <item>Pemakai</item>
+    </string-array>
     <string name="home_second">Home Second</string>
     <string name="menu_narkotika">Narkotika</string>
     <string name="menu_pisko">Psikotropika</string>

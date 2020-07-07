@@ -5,6 +5,7 @@ import com.example.drugs.utils.SingleResponse
 import com.example.drugs.webservices.ApiService
 import com.example.drugs.webservices.WrappedResponse
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -18,7 +19,9 @@ interface UserContract {
 
 class UserRepository (private val api: ApiService) : UserContract {
     override fun register(user: User, listener: SingleResponse<User>) {
-        val requestBody = Gson().toJson(user)
+        val g = GsonBuilder().create()
+        val requestBody = g.toJson(user)
+        println(requestBody)
         val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), requestBody)
         api.registrasi(body).enqueue(object: Callback<WrappedResponse<User>>{
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) = listener.onFailure(Error(t.message))

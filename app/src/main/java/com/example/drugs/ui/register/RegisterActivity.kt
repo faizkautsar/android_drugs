@@ -60,12 +60,12 @@ class RegisterActivity : AppCompatActivity() {
             val email = ed_email.text.toString().trim()
             val pass = ed_pass.text.toString().trim()
             val no_telp = ed_no_telp.text.toString().trim()
-            val alamat = ed_alamat.text.toString().trim()
+            val jalan = ed_jalan.text.toString().trim()
             val desa = ed_desa.text.toString().trim()
             val kecamatan = ed_kecamatan.text.toString().trim()
-            val kode_pos = ed_kode_pos.text.toString().trim()
+            val kota = ed_kota.text.toString().trim()
             //validate here
-            val user = User(nama = nama,password = pass ,email = email, no_telp = no_telp, alamat = alamat, desa = desa, kecamatan = kecamatan, kode_pos = kode_pos)
+            val user = User(nama = nama,password = pass ,email = email, no_telp = no_telp, jalan = jalan, desa = desa, kecamatan = kecamatan, kota = kota)
             registerViewModel.register(user)
         }
     }

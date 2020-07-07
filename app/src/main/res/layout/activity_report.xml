@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LaporActivity">
+    tools:context="ui.report.ReportActivity">
 
     <RelativeLayout
         android:layout_margin="10dp"
@@ -19,41 +19,20 @@
             android:layout_height="wrap_content"
             tools:ignore="UselessParent">
 
-            <com.google.android.material.selecteditem.SelectedItemLayout
+            <Spinner
+                android:entries="@array/tipe_peran"
+                android:id="@+id/til_peran"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
                 app:errorEnabled="true"
                 android:id="@+id/til_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Nama Pelapor"
-                    android:id="@+id/ed_nama"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.selecteditem.SelectedItemLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Email"
-                    android:id="@+id/ed_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_pass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Password Anda"
-                    android:id="@+id/ed_pass"
+                    android:hint="Masukkan Nama Terlapor"
+                    android:id="@+id/ed_nama_terlapor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -63,9 +42,8 @@
                 android:id="@+id/til_no_telp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan No Telp Anda"
+                    android:hint="Masukkan No Telepon Terlapor"
                     android:id="@+id/ed_no_telp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -78,8 +56,8 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Alamat Anda"
-                    android:id="@+id/ed_alamat"
+                    android:hint="Masukkan nama jalan"
+                    android:id="@+id/ed_jalan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -91,11 +69,12 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Desa Anda"
+                    android:hint="Desa/Dusun"
                     android:id="@+id/ed_desa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 app:errorEnabled="true"
@@ -104,7 +83,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Kecamatan Anda"
+                    android:hint="Masukkan Kecamatan"
                     android:id="@+id/ed_kecamatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -112,22 +91,89 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 app:errorEnabled="true"
-                android:id="@+id/til_kode_pos"
+                android:id="@+id/til_kota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Kode Pos Anda"
-                    android:id="@+id/ed_kode_pos"
+                    android:hint="Masukkan Kota"
+                    android:id="@+id/ed_kota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:errorEnabled="true"
+                android:id="@+id/til_jenis_narkoba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="Masukkan Jenis Narkoba Yang digunakan"
+                    android:id="@+id/ed_jenis_narkoba"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:errorEnabled="true"
+                android:id="@+id/til_pekerjaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="Masukkan Pekerjaan"
+                    android:id="@+id/ed_pekerjaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:errorEnabled="true"
+                android:id="@+id/til_kendaraan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="Kendaraan Yang Digunakan Plat Nomer "
+                    android:id="@+id/ed_kendaraan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:errorEnabled="true"
+                android:id="@+id/til_kegiatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="Sering Terlihat/Tempat Tongkrongan"
+                    android:id="@+id/ed_kegiatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:errorEnabled="true"
+                android:id="@+id/til_tmpt_transaksi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="Tempat Transaksi/Tempat Menggunakan"
+                    android:id="@+id/ed_tmpt_transaksi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:clickable="true"
-                android:text="register"
+                android:text="Lapor"
                 android:layout_marginBottom="20dp"
-                android:id="@+id/btn_register"
+                android:id="@+id/btn_lapor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

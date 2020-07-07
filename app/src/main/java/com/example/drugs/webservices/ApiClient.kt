@@ -54,13 +54,15 @@ interface ApiService {
     @POST("api/register")
     fun registrasi(@Body body : RequestBody) : Call<WrappedResponse<User>>
 
-
     @FormUrlEncoded
     @POST("api/login")
     fun login(
         @Field("email") email : String,
         @Field("password") password : String
     ) : Call<WrappedResponse<User>>
+
+    @POST("api/laporan")
+    fun lapor(@Header("Authorization") token: String,@Body body: RequestBody) : Call<WrappedResponse<Lapor>>
 }
 
 data class WrappedResponse<T>(

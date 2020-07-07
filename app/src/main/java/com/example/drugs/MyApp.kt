@@ -6,6 +6,7 @@ import com.example.drugs.ui.drugs.DrugViewModel
 import com.example.drugs.ui.login.LoginViewModel
 import com.example.drugs.ui.main.home.HomeViewModel
 import com.example.drugs.ui.register.RegisterViewModel
+import com.example.drugs.ui.report.ReportViewModel
 import com.example.drugs.webservices.ApiClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -32,6 +33,7 @@ val repositoryModule = module {
     factory { NarcoticRepository(get()) }
     factory { RehabilitationRepository(get()) }
     factory { PsychotropicRepository(get()) }
+    factory { ReportRepository(get()) }
 }
 
 val viewModelModule = module {
@@ -39,4 +41,5 @@ val viewModelModule = module {
     viewModel { RegisterViewModel(get()) }
     viewModel { HomeViewModel(get()) }
     viewModel { DrugViewModel(get(), get(), get()) }
+    viewModel { ReportViewModel(get()) }
 }

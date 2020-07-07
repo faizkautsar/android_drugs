@@ -19,6 +19,7 @@ import com.example.drugs.extensions.gone
 import com.example.drugs.extensions.toast
 import com.example.drugs.extensions.visible
 import com.example.drugs.ui.login.LoginActivity
+import com.example.drugs.ui.report.ReportActivity
 import com.example.drugs.webservices.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 if(Constants.getToken(this).equals("UNDEFINED")){
                     startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                 }else{
-                    toast("Lapor....")
+                    startActivity(Intent(this@MainActivity,ReportActivity::class.java))
                 }
                 true
             }

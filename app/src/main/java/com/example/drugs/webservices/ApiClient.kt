@@ -2,6 +2,7 @@ package com.example.drugs.webservices
 
 import com.example.drugs.models.*
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -44,7 +45,7 @@ interface ApiService {
     fun getNarcotic() : Call<WrappedListResponse<Narcotic>>
     @GET("api/psikotropika")
     fun getPsicotropica() : Call<WrappedListResponse<Psicotropica>>
-    @GET("api/zat_adiktif")
+    @GET("api/zat-adiktif")
     fun getAdiktif() : Call<WrappedListResponse<Adiktif>>
     @GET("api/hukum")
     fun getHukum() : Call<WrappedListResponse<Hukum>>
@@ -53,6 +54,22 @@ interface ApiService {
 
     @POST("api/register")
     fun registrasi(@Body body : RequestBody) : Call<WrappedResponse<User>>
+
+    @GET("api/profile")
+    fun profile (
+        @Header("Authorization") token: String
+    ) : Call<WrappedResponse<User>>
+    @POST("api/update-profile")
+    fun update(
+    @Header("Authorization") token:String
+    ) : Call<WrappedResponse<User>>
+
+    @Multipart
+    @POST("api/uploadFoto")
+    fun foto(
+        @Header("Authorization") token: String,
+        @Part foto : MultipartBody.Part
+    ) : Call<WrappedResponse<User>>
 
     @FormUrlEncoded
     @POST("api/login")

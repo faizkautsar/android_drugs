@@ -51,7 +51,7 @@
                         <TextView
                             android:maxLines="2"
                             android:textAlignment="center"
-                            android:text="lorem ipsum dollor si amet"
+                            android:text="zat/obat yang bersifat alamiah,sintetis,maupun semi sintetis."
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 

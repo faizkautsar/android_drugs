@@ -5,6 +5,7 @@ import com.example.drugs.repositories.*
 import com.example.drugs.ui.drugs.DrugViewModel
 import com.example.drugs.ui.login.LoginViewModel
 import com.example.drugs.ui.main.home.HomeViewModel
+import com.example.drugs.ui.profile.ProfileViewModel
 import com.example.drugs.ui.register.RegisterViewModel
 import com.example.drugs.ui.report.ReportViewModel
 import com.example.drugs.webservices.ApiClient
@@ -42,4 +43,5 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { DrugViewModel(get(), get(), get()) }
     viewModel { ReportViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
 }

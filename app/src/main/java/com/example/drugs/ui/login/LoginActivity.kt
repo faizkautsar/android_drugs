@@ -13,8 +13,6 @@ import com.example.drugs.extensions.disabled
 import com.example.drugs.extensions.enabled
 import com.example.drugs.extensions.toast
 import com.example.drugs.ui.main.MainActivity
-import com.example.drugs.viewmodels.UserState
-import com.example.drugs.viewmodels.UserViewModel
 import com.example.drugs.webservices.Constants
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -14,8 +14,58 @@ class ReportViewModel(private val reportRepository: ReportRepository) : ViewMode
     private fun hideLoading(){ state.value = ReportState.Loading(false) }
     private fun alert(message: String){ state.value = ReportState.Alert(message) }
     private fun success(){ state.value = ReportState.Success }
+    private fun reset() { state.value = ReportState.Reset }
 
-    fun report(token: String, lapor: Lapor){
+    fun Validate(nama : String,no_telp: String, jalan : String, desa: String,
+                 kecamatan: String, kota: String, jenis_narkoba : String, pekerjaan : String,
+                 kegiatan: String, tmpt_transaksi: String ) : Boolean {
+        reset()
+        if (nama.isEmpty()) {
+            state.value = ReportState.Validate(nama = "Nama tidak boleh kosong!")
+            return false
+        }
+        if (no_telp.isEmpty()) {
+            state.value = ReportState.Validate(no_telp = "Nomer telepon tidak boleh kosong!")
+            return false
+        }
+        if (jalan.isEmpty()) {
+            state.value = ReportState.Validate(jalan = "Nama jalan tidak boleh kosong!")
+            return false
+        }
+        if (desa.isEmpty()) {
+            state.value = ReportState.Validate(desa = "Desa/Dusun tidak boleh kosong!")
+            return false
+        }
+        if (kecamatan.isEmpty()) {
+            state.value = ReportState.Validate(kecamatan = "Kecamatan tidak boleh kosong!")
+            return false
+        }
+        if (kota.isEmpty()) {
+            state.value = ReportState.Validate(kota = "Kota/Kabupaten tidak boleh kosong!")
+            return false
+        }
+
+        if (jenis_narkoba.isEmpty()) {
+            state.value = ReportState.Validate(jenis_narkoba = "Jenis narkoba tidak boleh kosong!")
+            return false
+        }
+
+        if (pekerjaan.isEmpty()) {
+            state.value = ReportState.Validate(pekerjaan = "Pekerjaan tidak boleh kosong!")
+            return false
+        }
+        if (kegiatan.isEmpty()) {
+            state.value = ReportState.Validate(kegiatan = "Kegiatan tidak boleh kosong!")
+            return false
+        }
+        if (tmpt_transaksi.isEmpty()) {
+            state.value =
+                ReportState.Validate(tmpt_transaksi = "tempat transaksi/menggunakan narkoba tidak boleh kosong!")
+            return false
+        }
+        return true
+    }
+        fun report(token: String, lapor: Lapor){
         setLoading()
         reportRepository.report(token, lapor, object : SingleResponse<Lapor>{
             override fun onSuccess(data: Lapor?) {
@@ -36,4 +86,17 @@ sealed class ReportState {
     object Success: ReportState()
     data class Loading(val state: Boolean) : ReportState()
     data class Alert(val message: String) : ReportState()
+    data class Validate(
+        var nama : String? = null,
+        var no_telp : String? = null,
+        var jalan : String? = null,
+        var desa : String? = null,
+        var kecamatan : String? = null,
+        var kota : String? = null,
+        var jenis_narkoba : String? = null,
+        var pekerjaan : String? = null,
+        var kegiatan : String? = null,
+        var tmpt_transaksi : String? = null
+         ) : ReportState()
+    object Reset : ReportState()
 }

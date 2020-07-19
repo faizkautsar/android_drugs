@@ -40,6 +40,7 @@
                     android:id="@+id/adiktif_dampak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#C10808"
                     android:textAppearance="@android:style/TextAppearance.Small"/>
 
 

@@ -13,6 +13,53 @@ class RegisterViewModel (private val userRepository: UserRepository) : ViewModel
     private fun hideLoading(){ state.value = RegisterState.Loading(false) }
     private fun alert(message: String){ state.value = RegisterState.Alert(message) }
     private fun success(param : String){ state.value = RegisterState.Success(param) }
+    private fun reset() { state.value = RegisterState.Reset }
+
+    fun Validate(nama : String, email : String, pass : String, rePass: String, no_telp: String, jalan : String, desa: String,
+    kecamatan: String, kota: String) : Boolean {
+        reset()
+        if (nama.isEmpty()){
+            state.value = RegisterState.Validate(nama = "Nama tidak boleh kosong!")
+            return false
+        }
+
+        if (email.isEmpty()){
+            state.value = RegisterState.Validate(email = "Email tidak boleh kosong!")
+            return false
+        }
+
+        if (pass.isEmpty()){
+            state.value = RegisterState.Validate(pass = "Password tidak boleh kosong!")
+            return false
+        }
+        if (rePass.isEmpty()){
+            state.value = RegisterState.Validate(rePass = "Repassword tidak boleh kosong!")
+            return false
+        }
+
+        if (no_telp.isEmpty()){
+            state.value = RegisterState.Validate(no_telp = "Nomer telepon tidak boleh kosong!")
+            return false
+        }
+        if (jalan.isEmpty()){
+            state.value = RegisterState.Validate(jalan = "Nama jalan tidak boleh kosong!")
+            return false
+        }
+        if (desa.isEmpty()){
+            state.value = RegisterState.Validate(desa = "Desa/Dusun tidak boleh kosong!")
+            return false
+        }
+        if (kecamatan.isEmpty()){
+            state.value = RegisterState.Validate(kecamatan = "Kecamatan tidak boleh kosong!")
+            return false
+        }
+        if (kota.isEmpty()){
+            state.value = RegisterState.Validate(kota = "Kota/Kabupaten tidak boleh kosong!")
+            return false
+        }
+
+        return true
+    }
 
     fun register(user: User){
         setLoading()
@@ -35,4 +82,16 @@ sealed class RegisterState {
     data class Success(val param: String): RegisterState()
     data class Loading(val state: Boolean) : RegisterState()
     data class Alert(val message: String) : RegisterState()
+    data class Validate(
+        var nama : String? = null,
+        var email : String? = null,
+        var pass : String? = null,
+        var rePass : String? = null,
+        var no_telp : String? = null,
+        var jalan : String? = null,
+        var desa : String? = null,
+        var kecamatan : String? = null,
+        var kota : String? = null
+    ) : RegisterState()
+    object Reset : RegisterState()
 }

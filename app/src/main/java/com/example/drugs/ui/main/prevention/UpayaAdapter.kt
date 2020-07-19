@@ -13,7 +13,7 @@ class UpayaAdapter (private var upayas: MutableList<Upaya>, private val context:
     RecyclerView.Adapter<UpayaAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(u: Upaya, context: Context) {
+        fun bind(u: Upaya,context: Context) {
             with(itemView) {
                 upaya_aspek.text = u.aspek
                 upaya_ket.setHtml(u.keterangan!!)

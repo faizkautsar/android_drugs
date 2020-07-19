@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,6 +20,7 @@ import com.example.drugs.extensions.gone
 import com.example.drugs.extensions.toast
 import com.example.drugs.extensions.visible
 import com.example.drugs.ui.login.LoginActivity
+import com.example.drugs.ui.profile.ProfileActivity
 import com.example.drugs.ui.report.ReportActivity
 import com.example.drugs.webservices.Constants
 import kotlinx.android.synthetic.main.activity_main.*
@@ -35,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.nav_home,
-            R.id.nav_side_effect,
             R.id.nav_hukum,
             R.id.nav_rehabilitation,
             R.id.nav_upaya
@@ -72,10 +73,32 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    private fun popup(){
+        AlertDialog.Builder(this@MainActivity).apply {
+            setNegativeButton("profil"){dialog, _ ->
+                dialog.dismiss()
+                startActivity(Intent(this@MainActivity, ProfileActivity::class.java))
+            }
+            setPositiveButton("logout"){dialog, _ ->
+                dialog.dismiss()
+                logout()
+            }
+        }.show()
+    }
+
+    private fun logout() {
+        Constants.clearToken(this@MainActivity)
+        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+        this@MainActivity.finish()
+    }
+
     override fun onResume() {
         super.onResume()
         if(Constants.getToken(this) != "UNDEFINED"){
             user_photo.visible()
+            user_photo.setOnClickListener {
+                popup()
+            }
             setUserPhoto()
         }else{
             user_photo.gone()

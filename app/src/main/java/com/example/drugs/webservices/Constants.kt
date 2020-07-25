@@ -8,6 +8,9 @@ import java.util.*
 class Constants {
     companion object{
 
+        val channelId = "drugs_channel"
+        val channelName = "drug_notif_confirm"
+        val channelDesc = "Push notification test"
 
         fun getToken(c : Context) : String {
             val s = c.getSharedPreferences("USER", MODE_PRIVATE)

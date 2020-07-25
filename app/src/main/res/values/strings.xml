@@ -131,4 +131,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_drug_detail"> </string>
     <string name="report">Lapor</string>
+    <string name="title_activity_report">Lapor</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_login">Login</string>
 </resources>

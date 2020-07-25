@@ -17,7 +17,7 @@ import java.io.File
 interface UserContract {
     fun uploadFoto(token: String, imagePath : String, listener: SingleResponse<User>)
     fun register(user: User, listener: SingleResponse<User>)
-    fun login(email: String, password: String, listener: SingleResponse<User>)
+    fun login(email: String, password: String, fcmToken: String, listener: SingleResponse<User>)
     fun profile(token : String, listener: SingleResponse<User>)
     fun update(token: String, user : User, listener: SingleResponse<User>)
 }
@@ -62,8 +62,8 @@ class UserRepository (private val api: ApiService) : UserContract {
         })
     }
 
-    override fun login(email: String, password: String, listener: SingleResponse<User>) {
-        api.login(email, password).enqueue(object : Callback<WrappedResponse<User>>{
+    override fun login(email: String, password: String, fcmToken: String, listener: SingleResponse<User>) {
+        api.login(email, password, fcmToken).enqueue(object : Callback<WrappedResponse<User>>{
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) = listener.onFailure(Error(t.message))
 
             override fun onResponse(call: Call<WrappedResponse<User>>, response: Response<WrappedResponse<User>>) {

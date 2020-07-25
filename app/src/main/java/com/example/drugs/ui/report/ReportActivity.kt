@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import coil.api.load
 import com.example.drugs.R
@@ -15,6 +16,7 @@ import com.example.drugs.models.Lapor
 import com.example.drugs.webservices.Constants
 import com.fxn.pix.Pix
 import kotlinx.android.synthetic.main.activity_report.*
+import kotlinx.android.synthetic.main.content_report.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -26,9 +28,18 @@ class ReportActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report)
+        setSupportActionBar(toolbar)
+        setupToolbar()
+
         img_pelaku.setOnClickListener { Pix.start(this@ReportActivity, IMAGE_REQUEST_CODE) }
         observe()
         lapor()
+    }
+
+    private fun setupToolbar(){
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
+        toolbar.navigationIcon?.setTint(ContextCompat.getColor(this, R.color.white))
+        toolbar.setNavigationOnClickListener { finish() }
     }
 
     private fun observe(){

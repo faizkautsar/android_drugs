@@ -77,7 +77,8 @@ interface ApiService {
     @POST("api/login")
     fun login(
         @Field("email") email : String,
-        @Field("password") password : String
+        @Field("password") password : String,
+        @Field("fcm_token") fcmToken : String
     ) : Call<WrappedResponse<User>>
 
     @Multipart

@@ -1,194 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_margin="10dp"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.report.ReportActivity">
+    tools:context=".ui.report.ReportActivity">
 
-    <RelativeLayout
-        android:layout_margin="10dp"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="UselessParent">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_pelaku"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/ic_person_black"/>
+        </androidx.appcompat.widget.Toolbar>
 
-            <Spinner
-                android:entries="@array/tipe_peran"
-                android:id="@+id/til_peran"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_nama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Nama Terlapor"
-                    android:id="@+id/ed_nama_terlapor"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
+    <include layout="@layout/content_report"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_no_telp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan No Telepon Terlapor"
-                    android:id="@+id/ed_no_telp"
-                    android:digits="0123456789"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_alamat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan nama jalan"
-                    android:id="@+id/ed_jalan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_desa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Desa/Dusun"
-                    android:id="@+id/ed_desa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:clickable="true"
+        android:layout_margin="@dimen/margin_size_16"
+        android:text="Lapor"
+        android:layout_gravity="bottom"
+        android:id="@+id/btn_lapor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_kecamatan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Kecamatan"
-                    android:id="@+id/ed_kecamatan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_kota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Kota"
-                    android:id="@+id/ed_kota"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_jenis_narkoba"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Jenis Narkoba Yang digunakan"
-                    android:id="@+id/ed_jenis_narkoba"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_pekerjaan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Masukkan Pekerjaan"
-                    android:id="@+id/ed_pekerjaan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_kendaraan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Kendaraan Yang Digunakan Plat Nomer "
-                    android:id="@+id/ed_kendaraan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_kegiatan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Sering Terlihat/Tempat Tongkrongan"
-                    android:id="@+id/ed_kegiatan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                app:errorEnabled="true"
-                android:id="@+id/til_tmpt_transaksi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:hint="Tempat Transaksi/Tempat Menggunakan"
-                    android:id="@+id/ed_tmpt_transaksi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:clickable="true"
-                android:text="Lapor"
-                android:layout_marginBottom="20dp"
-                android:id="@+id/btn_lapor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

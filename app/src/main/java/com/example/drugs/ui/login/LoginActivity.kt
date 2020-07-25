@@ -4,17 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.drugs.R
-import com.example.drugs.ui.register.RegisterActivity
 import com.example.drugs.extensions.disabled
 import com.example.drugs.extensions.enabled
+import com.example.drugs.ui.register.RegisterActivity
 import com.example.drugs.extensions.toast
-import com.example.drugs.ui.main.MainActivity
 import com.example.drugs.webservices.Constants
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.content_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -23,9 +21,16 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        setSupportActionBar(toolbar)
+        setupToolbar()
         observe()
         login()
         goToRegisterActivity()
+    }
+
+    private fun setupToolbar(){
+        toolbar.setNavigationOnClickListener{finish()}
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
     }
 
     private fun observe() {
@@ -44,12 +49,10 @@ class LoginActivity : AppCompatActivity() {
 //                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
             }
             is LoginState.Reset -> {
-
                 setErrorEmail(null)
                 setErrorPassword(null)
             }
             is LoginState.Validate -> {
-
                 setErrorEmail(it.email)
                 setErrorPassword(it.pass)
             }
@@ -70,8 +73,9 @@ class LoginActivity : AppCompatActivity() {
         btn_login.setOnClickListener {
             val email = ed_email.text.toString().trim()
             val pass = ed_pass.text.toString().trim()
-            loginViewModel.login(email, pass)
-            loginViewModel.Validate(email, pass)
+            if(loginViewModel.Validate(email, pass)){
+                loginViewModel.getFirebaseToken(email, pass)
+            }
         }
     }
 

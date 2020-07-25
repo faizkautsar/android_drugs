@@ -1,10 +1,6 @@
 package com.example.drugs.ui.register
 
-import android.app.Activity
 import android.os.Bundle
-import android.text.Editable
-import android.text.InputFilter
-import android.text.TextWatcher
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -13,10 +9,9 @@ import com.example.drugs.extensions.disabled
 import com.example.drugs.extensions.enabled
 import com.example.drugs.extensions.showInfoAlert
 import com.example.drugs.models.User
-import com.example.drugs.webservices.Constants
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.content_register.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class RegisterActivity : AppCompatActivity() {
     private val registerViewModel: RegisterViewModel by viewModel()
@@ -24,8 +19,15 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        setSupportActionBar(toolbar)
+        setupToolbar()
         observe()
         reg()
+    }
+
+    private fun setupToolbar(){
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        toolbar.setNavigationOnClickListener { finish() }
     }
 
     private fun observe(){
@@ -33,7 +35,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun observeState() = registerViewModel.getState().observer(this, Observer { handleUI(it) })
-
     private fun handleUI(it : RegisterState){
         when(it){
             is RegisterState.Alert -> showInfoAlert(it.message)
@@ -44,22 +45,8 @@ class RegisterActivity : AppCompatActivity() {
                     btn_register.enabled()
                 }
             }
-
-            is RegisterState.Success-> {
-                popup(it.param, "verifikasi email dahulu")
-            }
-            is RegisterState.Reset -> {
-                setErrorNama(null)
-                setErrorEmail(null)
-                setErrorPassword(null)
-                setErrorRepassword(null)
-                setErrorNoTelp(null)
-                setErrorJalan(null)
-                setErrorDesa(null)
-                setErrorKecamatan(null)
-                setErrorKota(null)
-
-            }
+            is RegisterState.Success-> popup("Verifikasi email dahulu")
+            is RegisterState.Reset -> resetError()
             is RegisterState.Validate -> {
                 setErrorNama(it.nama)
                 setErrorEmail(it.email)
@@ -73,6 +60,18 @@ class RegisterActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    private fun resetError(){
+        setErrorNama(null)
+        setErrorEmail(null)
+        setErrorPassword(null)
+        setErrorRepassword(null)
+        setErrorNoTelp(null)
+        setErrorJalan(null)
+        setErrorDesa(null)
+        setErrorKecamatan(null)
+        setErrorKota(null)
     }
 
     private fun reg(){
@@ -95,21 +94,17 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun popup(token : String, message: String){
+    private fun popup(message: String){
         AlertDialog.Builder(this@RegisterActivity).apply {
             setMessage(message)
-            setNegativeButton("profil"){dialog, _ ->
+            setNegativeButton("OK"){dialog, _ ->
                 dialog.dismiss()
-                Constants.setToken(this@RegisterActivity, "Bearer ${token}")
-                setResult(Activity.RESULT_OK)
+//                Constants.setToken(this@RegisterActivity, "Bearer $token")
+//                setResult(Activity.RESULT_OK)
                 finish()
                 //startActivity(Intent(this@MainActivity, ProfileActivity::class.java))
             }
         }.show()
-    }
-
-    private fun nameFilter(){
-
     }
 
     private fun setErrorNama(err : String?){ til_nama.error = err }

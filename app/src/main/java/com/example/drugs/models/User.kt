@@ -16,6 +16,6 @@ data class User(
     @SerializedName("kota") var kota : String? = null,
     @SerializedName("api_token") var token : String? = null,
     @SerializedName("password") var password: String? = null,
-    @SerializedName("foto") var foto: String? = null
-
+    @SerializedName("foto") var foto: String? = null,
+    @SerializedName("fcm_token") var fcmToken : String? = null
 ) : Parcelable

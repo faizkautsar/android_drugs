@@ -88,12 +88,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun logout() {
         Constants.clearToken(this@MainActivity)
-        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-        this@MainActivity.finish()
+        userPhotoVisibility()
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun userPhotoVisibility(){
         if(Constants.getToken(this) != "UNDEFINED"){
             user_photo.visible()
             user_photo.setOnClickListener {
@@ -103,6 +101,11 @@ class MainActivity : AppCompatActivity() {
         }else{
             user_photo.gone()
         }
+    }
+
+    override fun onResume() {
+        userPhotoVisibility()
+        super.onResume()
     }
 
 }

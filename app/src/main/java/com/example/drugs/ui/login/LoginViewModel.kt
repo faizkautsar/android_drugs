@@ -2,12 +2,16 @@ package com.example.drugs.ui.login
 
 import androidx.lifecycle.ViewModel
 import com.example.drugs.models.User
+import com.example.drugs.repositories.FirebaseRepository
 import com.example.drugs.repositories.UserRepository
 import com.example.drugs.utils.SingleResponse
 import com.example.drugs.webservices.Constants
 import com.example.drugs.webservices.SingleLiveEvent
 
-class LoginViewModel(private val userRepo: UserRepository) : ViewModel(){
+class LoginViewModel(
+    private val firebaseRepo: FirebaseRepository,
+    private val userRepo: UserRepository
+) : ViewModel(){
     private val state: SingleLiveEvent<LoginState> = SingleLiveEvent()
 
     private fun setLoading(){ state.value = LoginState.Loading(true) }
@@ -17,9 +21,9 @@ class LoginViewModel(private val userRepo: UserRepository) : ViewModel(){
     private fun reset() { state.value = LoginState.Reset }
 
 
-        fun login(email: String, password: String) {
+    private fun login(email: String, password: String, fcmToken: String) {
             setLoading()
-            userRepo.login(email, password, object : SingleResponse<User> {
+            userRepo.login(email, password, fcmToken,  object : SingleResponse<User> {
                 override fun onSuccess(data: User?) {
                     hideLoading()
                     data?.let { success(it.token.toString()) }
@@ -30,7 +34,7 @@ class LoginViewModel(private val userRepo: UserRepository) : ViewModel(){
                     err.message?.let { alert(it) }
                 }
             })
-        }
+    }
 
     fun Validate(email : String, pass : String) : Boolean {
         reset()
@@ -56,10 +60,38 @@ class LoginViewModel(private val userRepo: UserRepository) : ViewModel(){
             }
         }
         return true
+    }
 
+    fun getFirebaseToken(email: String, password: String){
+        setLoading()
+        firebaseRepo.getToken(object: SingleResponse<String>{
+            override fun onSuccess(data: String?) {
+                hideLoading()
+                firebaseRepo.getToken(object: SingleResponse<String>{
+                    override fun onSuccess(data: String?) {
+                        hideLoading()
+                        data?.let { fcmToken ->
+                            login(email, password, fcmToken)
+                        }
+                    }
+
+                    override fun onFailure(err: Error) {
+                        hideLoading()
+                        alert(err.message.toString())
+                    }
+                })
+            }
+
+            override fun onFailure(err: Error) {
+                hideLoading()
+                err.message?.let { alert("Tidak dapat membuat akun. Coba lagi nanti") }
+            }
+        })
     }
-        fun getState() = state
-    }
+
+
+    fun getState() = state
+}
 
 sealed class LoginState {
     data class Alert(val message : String) : LoginState()

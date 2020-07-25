@@ -2,12 +2,16 @@ package com.example.drugs.ui.register
 
 import androidx.lifecycle.ViewModel
 import com.example.drugs.models.User
+import com.example.drugs.repositories.FirebaseRepository
 import com.example.drugs.repositories.UserRepository
 import com.example.drugs.utils.SingleResponse
 import com.example.drugs.webservices.Constants
 import com.example.drugs.webservices.SingleLiveEvent
 
-class RegisterViewModel (private val userRepository: UserRepository) : ViewModel(){
+class RegisterViewModel (
+    private val userRepository: UserRepository,
+    private val firebaseRepo: FirebaseRepository
+) : ViewModel(){
     private val state: SingleLiveEvent<RegisterState> = SingleLiveEvent()
 
     private fun setLoading(){ state.value = RegisterState.Loading(true) }

@@ -19,6 +19,14 @@
             android:layout_height="wrap_content"
             tools:ignore="UselessParent">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_pelaku"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/ic_person_black"/>
+
             <Spinner
                 android:entries="@array/tipe_peran"
                 android:id="@+id/til_peran"
@@ -33,6 +41,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Masukkan Nama Terlapor"
                     android:id="@+id/ed_nama_terlapor"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -45,6 +54,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Masukkan No Telepon Terlapor"
                     android:id="@+id/ed_no_telp"
+                    android:digits="0123456789"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>

@@ -24,24 +24,48 @@ class ReportViewModel(private val reportRepository: ReportRepository) : ViewMode
             state.value = ReportState.Validate(nama = "Nama tidak boleh kosong!")
             return false
         }
+        if(nama.length < 3){
+            state.value = ReportState.Validate(nama = "Nama minimal 3 karakter")
+            return false
+        }
         if (no_telp.isEmpty()) {
             state.value = ReportState.Validate(no_telp = "Nomer telepon tidak boleh kosong!")
+            return false
+        }
+        if (!(no_telp.length >= 11 && no_telp.length <= 13)) {
+            state.value = ReportState.Validate(no_telp = "Nomer telepon tidak valid")
             return false
         }
         if (jalan.isEmpty()) {
             state.value = ReportState.Validate(jalan = "Nama jalan tidak boleh kosong!")
             return false
         }
+        if(jalan.length < 10){
+            state.value = ReportState.Validate(jalan = "Nama jalan minimal 10 karakter")
+            return false
+        }
         if (desa.isEmpty()) {
             state.value = ReportState.Validate(desa = "Desa/Dusun tidak boleh kosong!")
             return false
         }
+        if(desa.length < 4){
+            state.value = ReportState.Validate(desa = "Nama desa minimal 4 karakter")
+            return false
+        }
         if (kecamatan.isEmpty()) {
-            state.value = ReportState.Validate(kecamatan = "Kecamatan tidak boleh kosong!")
+            state.value = ReportState.Validate(kecamatan = "Nama kecamatan tidak boleh kosong!")
+            return false
+        }
+        if(kecamatan.length < 5){
+            state.value = ReportState.Validate(kecamatan = "Nama kecamatan minimal 5 karakter")
             return false
         }
         if (kota.isEmpty()) {
             state.value = ReportState.Validate(kota = "Kota/Kabupaten tidak boleh kosong!")
+            return false
+        }
+        if(kota.length < 4){
+            state.value = ReportState.Validate(kota = "Nama kota minimal 4 karakter")
             return false
         }
 
@@ -49,25 +73,41 @@ class ReportViewModel(private val reportRepository: ReportRepository) : ViewMode
             state.value = ReportState.Validate(jenis_narkoba = "Jenis narkoba tidak boleh kosong!")
             return false
         }
+        if(jenis_narkoba.length < 4){
+            state.value = ReportState.Validate(jenis_narkoba = "Nama narkoba minimal 4 karakter")
+            return false
+        }
 
         if (pekerjaan.isEmpty()) {
             state.value = ReportState.Validate(pekerjaan = "Pekerjaan tidak boleh kosong!")
+            return false
+        }
+        if(pekerjaan.length <6){
+            state.value = ReportState.Validate(pekerjaan = "Nama jalan minimal 6 karakter")
             return false
         }
         if (kegiatan.isEmpty()) {
             state.value = ReportState.Validate(kegiatan = "Kegiatan tidak boleh kosong!")
             return false
         }
+        if(kegiatan.length < 6){
+            state.value = ReportState.Validate(kegiatan = "Kegiatan jalan minimal 6 karakter")
+            return false
+        }
         if (tmpt_transaksi.isEmpty()) {
             state.value =
-                ReportState.Validate(tmpt_transaksi = "tempat transaksi/menggunakan narkoba tidak boleh kosong!")
+                ReportState.Validate(tmpt_transaksi = "Tempat transaksi/menggunakan narkoba tidak boleh kosong!")
+            return false
+        }
+        if(tmpt_transaksi.length < 6){
+            state.value = ReportState.Validate(tmpt_transaksi = "Transaksi/ Penggunaan minimal 6 karakter")
             return false
         }
         return true
     }
-        fun report(token: String, lapor: Lapor){
+        fun report(token: String, lapor: Lapor, urlFoto:String){
         setLoading()
-        reportRepository.report(token, lapor, object : SingleResponse<Lapor>{
+        reportRepository.report(token, lapor, urlFoto, object : SingleResponse<Lapor>{
             override fun onSuccess(data: Lapor?) {
                 hideLoading()
                 success()

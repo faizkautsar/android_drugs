@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 class ApiClient {
     companion object {
-        const val ENDPOINT = "https://no-drugs.herokuapp.com/"
+        const val ENDPOINT = "http://no-drugs.tugas-akhir.com/"
         private val okHttp = OkHttpClient.Builder().apply {
             readTimeout(60, TimeUnit.SECONDS)
             connectTimeout(60, TimeUnit.SECONDS)
@@ -59,9 +59,11 @@ interface ApiService {
     fun profile (
         @Header("Authorization") token: String
     ) : Call<WrappedResponse<User>>
-    @POST("api/update-profile")
+
+    @POST("api/profile-update")
     fun update(
-    @Header("Authorization") token:String
+    @Header("Authorization") token:String,
+    @Body body: RequestBody
     ) : Call<WrappedResponse<User>>
 
     @Multipart
@@ -78,9 +80,14 @@ interface ApiService {
         @Field("password") password : String
     ) : Call<WrappedResponse<User>>
 
+    @Multipart
     @POST("api/laporan")
-    fun lapor(@Header("Authorization") token: String,@Body body: RequestBody) : Call<WrappedResponse<Lapor>>
-}
+    fun lapor(
+        @Header("Authorization") token: String,
+        @PartMap partMap: HashMap<String, RequestBody>,
+        @Part image: MultipartBody.Part
+    ): Call<WrappedResponse<Lapor>>
+    }
 
 data class WrappedResponse<T>(
     @SerializedName("message") var message : String,

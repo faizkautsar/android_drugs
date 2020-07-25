@@ -19,9 +19,11 @@ interface UserContract {
     fun register(user: User, listener: SingleResponse<User>)
     fun login(email: String, password: String, listener: SingleResponse<User>)
     fun profile(token : String, listener: SingleResponse<User>)
+    fun update(token: String, user : User, listener: SingleResponse<User>)
 }
 
 class UserRepository (private val api: ApiService) : UserContract {
+
     override fun uploadFoto(token: String, imagePath: String, listener: SingleResponse<User>) {
         val f = File(imagePath)
         val requestBody = RequestBody.create(MediaType.parse("image/*"), f)
@@ -41,7 +43,6 @@ class UserRepository (private val api: ApiService) : UserContract {
     override fun register(user: User, listener: SingleResponse<User>) {
         val g = GsonBuilder().create()
         val requestBody = g.toJson(user)
-        println(requestBody)
         val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), requestBody)
         api.registrasi(body).enqueue(object: Callback<WrappedResponse<User>>{
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) = listener.onFailure(Error(t.message))
@@ -50,7 +51,10 @@ class UserRepository (private val api: ApiService) : UserContract {
                 when{
                     response.isSuccessful -> {
                         val b = response.body()
-                        if (b!!.status) listener.onSuccess(b.data) else listener.onFailure(Error(b.message))
+                        if (b!!.status)
+                            listener.onSuccess(b.data)
+                        else
+                            listener.onFailure(Error("Gagal saat register. Mungkin email atau nomor telepon sudah pernah didaftarkan"))
                     }
                     else -> listener.onFailure(Error(response.message()))
                 }
@@ -93,4 +97,31 @@ class UserRepository (private val api: ApiService) : UserContract {
         })
     }
 
+    override fun update(token: String, user: User, listener: SingleResponse<User>) {
+        val g = GsonBuilder().create()
+        val requestBody = g.toJson(user)
+        val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), requestBody)
+        api.update(token, body).enqueue(object : Callback<WrappedResponse<User>>{
+            override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
+                listener.onFailure(Error(t.message))
+            }
+
+            override fun onResponse(
+                call: Call<WrappedResponse<User>>,
+                response: Response<WrappedResponse<User>>
+            ) {
+                when{
+                    response.isSuccessful -> {
+                        val b = response.body()
+                        if (b?.status!!){
+                            listener.onSuccess(b.data)
+                        }else{
+                            listener.onFailure(Error(b.message))
+                        }
+                    }
+                    !response.isSuccessful -> listener.onFailure(Error(response.message()))
+                }
+            }
+        })
+    }
 }

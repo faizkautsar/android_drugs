@@ -28,14 +28,14 @@ class LoginActivity : AppCompatActivity() {
         goToRegisterActivity()
     }
 
-    private fun observe(){
+    private fun observe() {
         observeState()
     }
 
     private fun observeState() = loginViewModel.getState().observer(this, Observer { handleUI(it) })
 
-    private fun handleUI(it : LoginState){
-        when(it){
+    private fun handleUI(it: LoginState) {
+        when (it) {
             is LoginState.ShowToast -> toast(it.message)
             is LoginState.Loading -> isLoading(it.state)
             is LoginState.Success -> {
@@ -43,26 +43,38 @@ class LoginActivity : AppCompatActivity() {
                 finish()
 //                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
             }
+            is LoginState.Reset -> {
+
+                setErrorEmail(null)
+                setErrorPassword(null)
+            }
+            is LoginState.Validate -> {
+
+                setErrorEmail(it.email)
+                setErrorPassword(it.pass)
+            }
         }
     }
 
-    private fun isLoading(b: Boolean){
-        if(b){
+    private fun isLoading(b: Boolean) {
+        if (b) {
             btn_login.disabled()
             btn_register.disabled()
-        }else{
+        } else {
             btn_login.enabled()
             btn_register.enabled()
         }
     }
 
-    private fun login(){
+    private fun login() {
         btn_login.setOnClickListener {
             val email = ed_email.text.toString().trim()
             val pass = ed_pass.text.toString().trim()
             loginViewModel.login(email, pass)
+            loginViewModel.Validate(email, pass)
         }
     }
+
 
     private fun goToRegisterActivity(){
         btn_register.setOnClickListener {
@@ -76,5 +88,9 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
     }
+    private fun nameFilter(){
 
+    }
+    private fun setErrorEmail(err : String?){ til_email.error = err }
+    private fun setErrorPassword(err : String?){ til_pass.error = err }
 }

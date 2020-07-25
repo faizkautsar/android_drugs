@@ -8,6 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Lapor(
     @SerializedName("id")var id : Int? = null,
+    @SerializedName("foto")var foto : String? = null,
     @SerializedName("peran")var peran : String? = null,
     @SerializedName("nama")var nama : String? = null,
     @SerializedName("no_telp")var no_telp : String? = null,

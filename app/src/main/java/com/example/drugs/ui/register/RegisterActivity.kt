@@ -87,7 +87,8 @@ class RegisterActivity : AppCompatActivity() {
             val kecamatan = ed_kecamatan.text.toString().trim()
             val kota = ed_kota.text.toString().trim()
             //validate here
-            val user = User(nama = nama,password = pass ,email = email, no_telp = no_telp, jalan = jalan, desa = desa, kecamatan = kecamatan, kota = kota)
+            val user = User(nama = nama,password = pass ,email = email, no_telp = no_telp, jalan = jalan, desa = desa,
+                kecamatan = kecamatan, kota = kota)
             if (registerViewModel.Validate(nama, email, pass, repass, no_telp, jalan, desa, kecamatan, kota)){
                 registerViewModel.register(user)
             }

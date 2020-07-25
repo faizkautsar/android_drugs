@@ -1,25 +1,32 @@
 package com.example.drugs.ui.report
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import coil.api.load
 import com.example.drugs.R
 import com.example.drugs.extensions.disabled
 import com.example.drugs.extensions.enabled
 import com.example.drugs.extensions.showInfoAlert
 import com.example.drugs.models.Lapor
 import com.example.drugs.webservices.Constants
+import com.fxn.pix.Pix
 import kotlinx.android.synthetic.main.activity_report.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
 
 class ReportActivity : AppCompatActivity() {
-
+    companion object { const val IMAGE_REQUEST_CODE = 123 }
     private val reportViewModel : ReportViewModel by viewModel()
+    private lateinit var foto : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report)
+        img_pelaku.setOnClickListener { Pix.start(this@ReportActivity, IMAGE_REQUEST_CODE) }
         observe()
         lapor()
     }
@@ -89,16 +96,17 @@ class ReportActivity : AppCompatActivity() {
 
             //validate here
             val token = Constants.getToken(this)
-            val lapor = Lapor(peran = peran, nama = nama, no_telp = no_telp, jalan = jalan, desa = desa,
+            val lapor = Lapor(foto= foto, peran = peran, nama = nama, no_telp = no_telp, jalan = jalan, desa = desa,
                 kecamatan = kecamatan, kota = kota, jenis_narkoba = jenis_narkoba, pekerjaan = pekerjaan,
                 kendaraan = kendaraan, kegiatan = kegiatan, tmpt_transaksi = tmpt_transaksi)
             if (reportViewModel.Validate(
                     nama, no_telp, jalan, desa, kecamatan, kota, jenis_narkoba, pekerjaan, kegiatan,
                     tmpt_transaksi)) {
-                reportViewModel.report(token, lapor)
+                reportViewModel.report(token, lapor, foto)
             }
         }
     }
+
     private fun toast(message : String) = Toast.makeText(this@ReportActivity, message, Toast.LENGTH_LONG).show()
 
     private fun setErrorNama(err : String?){ til_nama.error = err }
@@ -112,4 +120,21 @@ class ReportActivity : AppCompatActivity() {
     private fun setErrorKegiatan(err : String?){ til_kegiatan.error = err }
     private fun setErrorTransaksi(err : String?){ til_tmpt_transaksi.error = err }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            val selectedImageUri = data.getStringArrayListExtra(Pix.IMAGE_RESULTS)
+            selectedImageUri?.let {
+                val file = File(it[0])
+                val sizeInKb = file.length().toDouble() / 2024
+                val sizeInMB = sizeInKb / 2024
+                if (sizeInMB >= 2) {
+                    showInfoAlert("File yang anda pilih terlalu besar.")
+                    return
+                }
+                foto = it[0]
+                img_pelaku.load(file)
+            }
+        }
+    }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "585476539439",
+    "firebase_url": "https://no-drugs-d48d0.firebaseio.com",
+    "project_id": "no-drugs-d48d0",
+    "storage_bucket": "no-drugs-d48d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585476539439:android:0788c980cc5cf39b8772da",
+        "android_client_info": {
+          "package_name": "com.example.drugs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585476539439-mgvpskuckgujc4gin7hudpb9760cgh88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4gkcSml2teIjtDziDMNUF7PBBYJHfUNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585476539439-mgvpskuckgujc4gin7hudpb9760cgh88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

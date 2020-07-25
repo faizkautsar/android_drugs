@@ -13,33 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_product"
-            android:src="@drawable/ic_person_black"
-            android:scaleType="centerCrop"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:contentDescription="foto produk" />
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:id="@+id/btn_image"
-            android:textAllCaps="false"
-            android:text="edit foto profil"
-            android:layout_height="wrap_content"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_marginTop="16dp"
             app:errorEnabled="true"
             app:boxBackgroundColor="@android:color/transparent"
-            android:id="@+id/til_name"
+            android:id="@+id/til_nama"
             android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:hint="Nama"
                 android:maxLines="1"
-                android:id="@+id/et_name"
+                android:id="@+id/et_nama"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,6 +41,7 @@
                 android:hint="Nomer Telepon"
                 android:maxLines="1"
                 android:id="@+id/et_no_telp"
+                android:digits="0123456789"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,13 +108,14 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:enabled="false"
+            android:id="@+id/btn_update"
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:id="@+id/btn_submit"
             android:textAllCaps="false"
             android:text="Simpan"
-            android:layout_height="56dp"/>
+            android:layout_height="56dp">
+
+    </com.google.android.material.button.MaterialButton>
     </LinearLayout>
 
 

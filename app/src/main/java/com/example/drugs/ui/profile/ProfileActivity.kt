@@ -38,9 +38,10 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         observe()
         setupEasyImae()
-        fetchProfile()
         pickImage()
         checkPermisson()
+
+
     }
     private fun setupEasyImae(){
         easyImage = EasyImage.Builder(this@ProfileActivity)
@@ -109,7 +110,15 @@ class ProfileActivity : AppCompatActivity() {
             tx_nama.text = it.nama
             tx_email.text = it.email
             tx_no_telp.text = it.no_telp
-            tx_alamat.text = it.alamat
+            tx_jl.text = it.jalan
+            tx_desa.text = it.desa
+            tx_kec.text = it.kecamatan
+            tx_kota.text = it.kota
+            edit_profil.setOnClickListener {_->
+                startActivity(Intent(this,UpdateProfileActivity::class.java).apply{
+                    putExtra("USER", it)
+                })
+            }
         }
     }
 
@@ -124,7 +133,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun onPhotoReturned(images : Array<MediaFile>) = profileViewModel.setImagePath(images[0].file.absolutePath)
     private fun observeState() = profileViewModel.listenToState().observer(this, Observer { handleState(it) })
     private fun observeUser() = profileViewModel.listenToUser().observe(this, Observer { handleUser(it) })
-    private fun fetchProfile() = profileViewModel.profile(Constants.getToken(this@ProfileActivity))
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -135,5 +144,10 @@ class ProfileActivity : AppCompatActivity() {
                 onPhotoReturned(imageFiles)
             }
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        profileViewModel.profile(Constants.getToken(this@ProfileActivity))
     }
 }

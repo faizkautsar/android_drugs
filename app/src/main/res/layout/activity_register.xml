@@ -83,6 +83,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:hint="Masukkan No Telp Anda"
                     android:id="@+id/ed_no_telp"
+                    android:digits="0123456789"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>

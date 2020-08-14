@@ -11,6 +11,7 @@ import com.example.drugs.R
 import com.example.drugs.extensions.gone
 import com.example.drugs.models.Psicotropica
 import com.example.drugs.ui.drug_detail.DrugDetailActivity
+import com.example.drugs.webservices.ApiClient
 import kotlinx.android.synthetic.main.list_item_drug.view.*
 
 class PsychotropicAdapter (private val psychos : MutableList<Psicotropica>) : RecyclerView.Adapter<PsychotropicAdapter.ViewHolder>(){
@@ -18,7 +19,8 @@ class PsychotropicAdapter (private val psychos : MutableList<Psicotropica>) : Re
 
         fun bindPsycho(data: Psicotropica) {
             with(itemView) {
-                drug_image.load(data.gambar)
+                val image = "${ApiClient.ENDPOINT}/public/uploads/narkoba/psikotropika/${data.gambar}"
+                drug_image.load(image)
                 drug_name.text = data.nama
                 drug_class.text = data.golongan
                 drug_type.gone()

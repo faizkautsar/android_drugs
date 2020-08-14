@@ -9,6 +9,7 @@ import coil.api.load
 import com.example.drugs.R
 import com.example.drugs.models.Narcotic
 import com.example.drugs.ui.drug_detail.DrugDetailActivity
+import com.example.drugs.webservices.ApiClient
 import kotlinx.android.synthetic.main.list_item_drug.view.*
 
 class NarcoticAdapter (private val narcotis : MutableList<Narcotic>) : RecyclerView.Adapter<NarcoticAdapter.ViewHolder>(){
@@ -16,7 +17,8 @@ class NarcoticAdapter (private val narcotis : MutableList<Narcotic>) : RecyclerV
 
         fun bindNarcotic(data: Narcotic) {
             with(itemView) {
-                drug_image.load(data.gambar)
+                val image = "${ApiClient.ENDPOINT}/public/uploads/narkoba/narkotika/${data.gambar}"
+                drug_image.load(image)
                 drug_name.text = data.nama
                 drug_class.text = data.golongan
                 drug_type.text = data.jenis

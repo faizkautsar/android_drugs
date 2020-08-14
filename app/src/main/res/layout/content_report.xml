@@ -27,7 +27,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/ic_person_black"/>
+                android:src="@drawable/ic_add_a_photo_black_24dp"/>
 
             <Spinner
                 android:entries="@array/tipe_peran"

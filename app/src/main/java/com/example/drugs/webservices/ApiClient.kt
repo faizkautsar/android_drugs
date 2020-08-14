@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 class ApiClient {
     companion object {
-        const val ENDPOINT = "http://no-drugs.tugas-akhir.com/"
+        const val ENDPOINT = "https://no-drugs.tugas-akhir.com/"
         private val okHttp = OkHttpClient.Builder().apply {
             readTimeout(60, TimeUnit.SECONDS)
             connectTimeout(60, TimeUnit.SECONDS)

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profile.UpdateProfileActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp">
+<LinearLayout
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="16dp"
+        app:errorEnabled="true"
+        app:boxBackgroundColor="@android:color/transparent"
+        android:id="@+id/til_nama"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:hint="Nama"
+            android:maxLines="1"
+            android:id="@+id/et_nama"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        app:errorEnabled="true"
+        app:boxBackgroundColor="@android:color/transparent"
+        android:id="@+id/til_no_telp"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:hint="Nomer Telepon"
+            android:maxLines="1"
+            android:id="@+id/et_no_telp"
+            android:digits="0123456789"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/til_jalan"
+        app:errorEnabled="true"
+        app:boxBackgroundColor="@android:color/transparent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/et_jalan"
+            android:hint="Nama Jalan"
+            android:maxLines="5"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:errorEnabled="true"
+        android:id="@+id/til_desa"
+        app:boxBackgroundColor="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:hint="Desa/Dusun"
+            android:maxLines="5"
+            android:inputType="textPostalAddress"
+            android:id="@+id/et_desa"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:errorEnabled="true"
+        android:id="@+id/til_kecamatan"
+        app:boxBackgroundColor="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:hint="Kecamatan"
+            android:maxLines="5"
+            android:inputType="textPostalAddress"
+            android:id="@+id/et_kecamatan"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:errorEnabled="true"
+        android:id="@+id/til_kota"
+        app:boxBackgroundColor="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:hint="Kota/Kabupaten"
+            android:maxLines="5"
+            android:inputType="textPostalAddress"
+            android:id="@+id/et_kota"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_update"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:textAllCaps="false"
+        android:text="Simpan"
+        android:layout_height="56dp">
+
+    </com.google.android.material.button.MaterialButton>
+</LinearLayout>
+</RelativeLayout>
+
+</ScrollView>

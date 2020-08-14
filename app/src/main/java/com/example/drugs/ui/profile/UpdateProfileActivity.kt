@@ -14,7 +14,10 @@ import com.example.drugs.extensions.toast
 import com.example.drugs.models.User
 import com.example.drugs.utils.SingleResponse
 import com.example.drugs.webservices.Constants
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_update_profile.*
+import kotlinx.android.synthetic.main.activity_update_profile.toolbar
+import kotlinx.android.synthetic.main.conten_update_profile.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UpdateProfileActivity : AppCompatActivity() {
@@ -23,8 +26,10 @@ class UpdateProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
+        setSupportActionBar(toolbar)
         observe()
         update()
+        setupToolbar()
         getpasseduser()?.let {
             et_nama.setText(it.nama)
             et_no_telp.setText(it.no_telp)
@@ -34,6 +39,10 @@ class UpdateProfileActivity : AppCompatActivity() {
             et_kota.setText(it.kota)
         }
 
+    }
+    private fun setupToolbar() {
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        toolbar.setNavigationOnClickListener { finish() }
     }
         private fun observe(){
             observeState()

@@ -10,6 +10,7 @@ import com.example.drugs.R
 import com.example.drugs.extensions.gone
 import com.example.drugs.models.Adiktif
 import com.example.drugs.ui.drug_detail.DrugDetailActivity
+import com.example.drugs.webservices.ApiClient
 import kotlinx.android.synthetic.main.list_item_drug.view.*
 
 class AddictiveAdapter(private val addictives : MutableList<Adiktif>) : RecyclerView.Adapter<AddictiveAdapter.ViewHolder>() {
@@ -18,7 +19,8 @@ class AddictiveAdapter(private val addictives : MutableList<Adiktif>) : Recycler
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindAddictive(data: Adiktif) {
             with(itemView) {
-                drug_image.load(data.gambar)
+                val image = "${ApiClient.ENDPOINT}/public/uploads/narkoba/zat-adiktif/${data.gambar}"
+                drug_image.load(image)
                 drug_name.text = data.nama
                 drug_class.gone()
                 drug_type.gone()

@@ -5,11 +5,13 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import coil.api.load
 import com.example.drugs.R
 import com.example.drugs.extensions.gone
 import com.example.drugs.models.Adiktif
 import com.example.drugs.models.Narcotic
 import com.example.drugs.models.Psicotropica
+import com.example.drugs.webservices.ApiClient
 import kotlinx.android.synthetic.main.activity_drug_detail.*
 import kotlinx.android.synthetic.main.content_scrolling.*
 
@@ -22,8 +24,13 @@ class DrugDetailActivity : AppCompatActivity() {
         fill()
     }
 
+    private fun getImageUrl(path: String, image: String) : String{
+        return "${ApiClient.ENDPOINT}/public/uploads/narkoba/${path}/$image"
+    }
+
     private fun fill(){
         getAddictive()?.let {
+            detail_image.load(getImageUrl("zat-adiktif", it.gambar.toString()))
             detail_drug_name.text = it.nama
             detail_drug_class.gone()
             detail_drug_type.gone()
@@ -31,6 +38,7 @@ class DrugDetailActivity : AppCompatActivity() {
             it.dampak?.let { it1 -> detail_drug_effect.setHtml(it1) }
         }
         getPsychotropic()?.let {
+            detail_image.load(getImageUrl("psikotropika", it.gambar.toString()))
             detail_drug_name.text = it.nama
             detail_drug_class.text = it.golongan
             detail_drug_type.gone()
@@ -38,6 +46,7 @@ class DrugDetailActivity : AppCompatActivity() {
             it.dampak?.let { it1 -> detail_drug_effect.setHtml(it1) }
         }
         getNarcotic()?.let {
+            detail_image.load(getImageUrl("narkotika", it.gambar.toString() ))
             detail_drug_name.text = it.nama
             detail_drug_class.text = it.golongan
             detail_drug_type.text = it.jenis

@@ -7,6 +7,7 @@ import android.os.Build
 import com.example.drugs.repositories.*
 import com.example.drugs.ui.drugs.DrugViewModel
 import com.example.drugs.ui.login.LoginViewModel
+import com.example.drugs.ui.main.MainViewModel
 import com.example.drugs.ui.main.home.HomeViewModel
 import com.example.drugs.ui.profile.ProfileViewModel
 import com.example.drugs.ui.register.RegisterViewModel
@@ -62,4 +63,5 @@ val viewModelModule = module {
     viewModel { DrugViewModel(get(), get(), get()) }
     viewModel { ReportViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
+    viewModel { MainViewModel() }
 }

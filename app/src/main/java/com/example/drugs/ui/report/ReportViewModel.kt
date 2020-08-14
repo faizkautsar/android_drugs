@@ -32,7 +32,7 @@ class ReportViewModel(private val reportRepository: ReportRepository) : ViewMode
             state.value = ReportState.Validate(no_telp = "Nomer telepon tidak boleh kosong!")
             return false
         }
-        if (!(no_telp.length >= 11 && no_telp.length <= 13)) {
+        if (!(no_telp.length >= 10 && no_telp.length <= 13)) {
             state.value = ReportState.Validate(no_telp = "Nomer telepon tidak valid")
             return false
         }
@@ -40,7 +40,7 @@ class ReportViewModel(private val reportRepository: ReportRepository) : ViewMode
             state.value = ReportState.Validate(jalan = "Nama jalan tidak boleh kosong!")
             return false
         }
-        if(jalan.length < 10){
+        if(jalan.length < 8){
             state.value = ReportState.Validate(jalan = "Nama jalan minimal 10 karakter")
             return false
         }

@@ -35,7 +35,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:src="@mipmap/ic_launcher"
+                            android:src="@drawable/ic_art_track_black_70dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -51,7 +51,7 @@
                         <TextView
                             android:maxLines="2"
                             android:textAlignment="center"
-                            android:text="zat/obat yang bersifat alamiah,sintetis,maupun semi sintetis."
+                            android:text="alamiah,sintetis,maupun semi sintetis."
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -75,7 +75,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:src="@mipmap/ic_launcher"
+                            android:src="@drawable/ic_art_track_black_70dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -91,7 +91,7 @@
                         <TextView
                             android:maxLines="2"
                             android:textAlignment="center"
-                            android:text="lorem ipsum dollor si amet"
+                            android:text="Obat ganggguan jiwa"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:src="@mipmap/ic_launcher"
+                            android:src="@drawable/ic_art_track_black_70dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -131,7 +131,7 @@
                         <TextView
                             android:maxLines="2"
                             android:textAlignment="center"
-                            android:text="lorem ipsum dollor si amet"
+                            android:text="Bukan narkoba tapi bikin candu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 

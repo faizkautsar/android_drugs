@@ -11,11 +11,7 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home"/>
 
-    <fragment
-        android:id="@+id/nav_side_effect"
-        android:name="com.example.drugs.ui.main.side_effect.DampakFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_dampak" />
+
 
     <fragment
         android:id="@+id/nav_hukum"
@@ -23,11 +19,6 @@
         android:label="Dasar Hukum"
         tools:layout="@layout/fragment_peraturan" />
 
-    <fragment
-        android:id="@+id/nav_rehabilitation"
-        android:name="com.example.drugs.ui.main.rehabilitation.RehabilitationFragment"
-        android:label="@string/menu_rehab"
-        tools:layout="@layout/fragment_rehabilitation" />
 
     <fragment
         android:id="@+id/nav_upaya"

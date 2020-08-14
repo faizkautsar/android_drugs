@@ -21,6 +21,8 @@ import com.example.drugs.models.User
 import com.example.drugs.webservices.ApiClient
 import com.example.drugs.webservices.Constants
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.content_profile.*
+
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.aprilapps.easyphotopicker.EasyImage
 import pl.aprilapps.easyphotopicker.MediaFile
@@ -36,12 +38,17 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        setSupportActionBar(toolbar)
         observe()
         setupEasyImae()
         pickImage()
         checkPermisson()
+        setupToolbar()
 
-
+    }
+    private fun setupToolbar() {
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        toolbar.setNavigationOnClickListener { finish() }
     }
     private fun setupEasyImae(){
         easyImage = EasyImage.Builder(this@ProfileActivity)
@@ -106,6 +113,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun handleUser(it: User?){
         it?.let {
+            tx_name.text = it.nama
             img_profile.load(ApiClient.ENDPOINT+""+it.foto)
             tx_nama.text = it.nama
             tx_email.text = it.email

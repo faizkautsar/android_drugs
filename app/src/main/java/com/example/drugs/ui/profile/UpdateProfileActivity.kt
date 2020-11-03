@@ -31,6 +31,7 @@ class UpdateProfileActivity : AppCompatActivity() {
         update()
         setupToolbar()
         getpasseduser()?.let {
+
             et_nama.setText(it.nama)
             et_no_telp.setText(it.no_telp)
             et_jalan.setText(it.jalan )

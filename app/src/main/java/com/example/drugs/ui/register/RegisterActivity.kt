@@ -107,6 +107,7 @@ class RegisterActivity : AppCompatActivity() {
         }.show()
     }
 
+
     private fun setErrorNama(err : String?){ til_nama.error = err }
     private fun setErrorEmail(err : String?){ til_email.error = err }
     private fun setErrorPassword(err : String?){ til_pass.error = err }

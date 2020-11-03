@@ -60,6 +60,12 @@ interface ApiService {
         @Header("Authorization") token: String
     ) : Call<WrappedResponse<User>>
 
+    @GET("api/foto-profile")
+    fun fotoProfile(
+        @Header("Authorization")token: String
+    ) : Call<WrappedResponse<User>>
+
+
     @POST("api/profile-update")
     fun update(
     @Header("Authorization") token:String,
@@ -72,6 +78,8 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Part foto : MultipartBody.Part
     ) : Call<WrappedResponse<User>>
+
+
 
     @FormUrlEncoded
     @POST("api/login")

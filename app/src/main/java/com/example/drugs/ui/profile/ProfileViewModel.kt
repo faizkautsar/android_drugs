@@ -88,7 +88,7 @@ class ProfileViewModel (private val userRepository: UserRepository) : ViewModel(
         userRepository.update(token, data, object : SingleResponse<User>{
             override fun onSuccess(data: User?) {
                 hideLoading()
-                data?.let { state.value = ProfileState.SuccessUpdate }
+                data?.let { update() }
             }
             override fun onFailure(err: Error) {
                 hideLoading()
@@ -102,11 +102,13 @@ class ProfileViewModel (private val userRepository: UserRepository) : ViewModel(
         userRepository.uploadFoto(token, path, object : SingleResponse<User>{
             override fun onSuccess(data: User?) {
                 hideLoading()
+                println("success")
                 data?.let { success() }
             }
             override fun onFailure(err: Error) {
                 hideLoading()
                 err.message?.let { toast(it) }
+
             }
         })
     }
@@ -117,7 +119,10 @@ class ProfileViewModel (private val userRepository: UserRepository) : ViewModel(
         userRepository.profile(token, object : SingleResponse<User>{
             override fun onSuccess(data: User?) {
                 hideLoading()
-                data?.let { user.postValue(it) }
+                data?.let {
+                    println("user : $it")
+                    user.postValue(it)
+                }
             }
 
             override fun onFailure(err: Error) {
@@ -138,7 +143,7 @@ sealed class ProfileState{
     object Update:ProfileState()
     object Reset : ProfileState()
     data class Alert(val message: String) : ProfileState()
-    data class UploadImage(val imagePath : String) : ProfileState()
+    data class uploadImage(val imagePath : String) : ProfileState()
     object Success : ProfileState()
     object SuccessUpdate : ProfileState()
     data class Loading(var state : Boolean = false) : ProfileState()

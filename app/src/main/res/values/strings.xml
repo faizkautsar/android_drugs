@@ -139,7 +139,11 @@
     <string name="title_activity_profile">Profile</string>
     <string name="title_fragment_peraturan">Dasar Hukum</string>
     <string name="title_fragment_upaya">Upaya Pencegahan</string>
+    <string name="title_activity_detail_profile">DetailProfile</string>
 
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 
 </resources>

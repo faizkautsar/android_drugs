@@ -40,6 +40,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         setSupportActionBar(toolbar)
         observe()
+        fetchProfile()
         setupEasyImae()
         pickImage()
         checkPermisson()
@@ -92,7 +93,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun pickImage(){
-        img_profile.setOnClickListener {
+        camera_action .setOnClickListener {
             easyImage.openGallery(this@ProfileActivity)
         }
     }
@@ -102,6 +103,7 @@ class ProfileActivity : AppCompatActivity() {
         observeUser()
         observeImagePath()
     }
+
 
     private fun handleImagePath(path: String){
         if(path.isNotEmpty()){
@@ -113,8 +115,13 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun handleUser(it: User?){
         it?.let {
-            tx_name.text = it.nama
-            img_profile.load(ApiClient.ENDPOINT+""+it.foto)
+            //tx_name.text = it.nama
+            img_profile.load(ApiClient.ENDPOINT+"public/"+it.foto)
+            img_profile.setOnClickListener {_->
+                startActivity(Intent(this,FullscreenActivity::class.java).apply{
+                    putExtra("FOTO", ApiClient.ENDPOINT+"public/"+it.foto)
+                })
+            }
             tx_nama.text = it.nama
             tx_email.text = it.email
             tx_no_telp.text = it.no_telp
@@ -134,6 +141,7 @@ class ProfileActivity : AppCompatActivity() {
         when(s){
             is ProfileState.ShowToaast -> toast(s.message)
             is ProfileState.Loading -> isLoading(s.state)
+            is ProfileState.Success -> fetchProfile()
         }
     }
 
@@ -141,6 +149,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun onPhotoReturned(images : Array<MediaFile>) = profileViewModel.setImagePath(images[0].file.absolutePath)
     private fun observeState() = profileViewModel.listenToState().observer(this, Observer { handleState(it) })
     private fun observeUser() = profileViewModel.listenToUser().observe(this, Observer { handleUser(it) })
+    private fun fetchProfile() = profileViewModel.profile(Constants.getToken(this@ProfileActivity))
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -149,6 +158,7 @@ class ProfileActivity : AppCompatActivity() {
             override fun onCanceled(source: MediaSource) {}
             override fun onImagePickerError(error: Throwable, source: MediaSource) {}
             override fun onMediaFilesPicked(imageFiles: Array<MediaFile>, source: MediaSource) {
+                //img_profile.load(imageFiles[0].file)
                 onPhotoReturned(imageFiles)
             }
         })
@@ -156,6 +166,6 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        profileViewModel.profile(Constants.getToken(this@ProfileActivity))
+
     }
 }

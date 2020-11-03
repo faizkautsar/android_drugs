@@ -140,6 +140,13 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
+            <TextView
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="Statistik Rehabilitasi 2019"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -160,8 +167,6 @@
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
-
 
         </LinearLayout>
 

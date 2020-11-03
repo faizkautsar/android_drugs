@@ -33,7 +33,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_alignParentEnd="true"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/ic_person"
                     android:id="@+id/user_photo"
                     android:layout_marginEnd="@dimen/margin_size_16"
                     android:layout_centerVertical="true"
